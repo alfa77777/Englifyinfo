@@ -466,9 +466,11 @@ dialog.docdlg::backdrop{background:rgba(5,12,42,.82)}
 .zeros div{flex:1;text-align:center;padding:14px 6px;border-radius:var(--r-sm);background:var(--mint-bg)}
 .zeros b{display:block;font-size:28px;color:var(--mint);line-height:1}
 .zeros span{font-size:13px;color:var(--mute);font-weight:600}
-.age{display:flex;align-items:center;gap:16px;margin:4px 0 14px}
-.age input{flex:1;accent-color:var(--blue);height:28px}
-.age output{font-size:28px;font-weight:800;min-width:3.2ch;text-align:right}
+.age{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:4px 0 14px}
+.age button{padding:12px 6px;border-radius:var(--r-sm);border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-size:17px;font-weight:800;font-variant-numeric:tabular-nums;cursor:pointer;transition:background .25s,border-color .25s,color .25s,box-shadow .25s}
+.age button:hover{border-color:var(--blue)}
+.age button[aria-checked="true"]{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 8px 18px -10px rgba(45,107,255,.8)}
+.age button:focus-visible{outline:3px solid var(--blue-300);outline-offset:2px}
 .prov{display:grid;gap:8px}
 .pv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:10px;align-items:center;padding:12px 14px;border-radius:var(--r-sm);background:var(--bg);transition:opacity .35s,background .35s}
 .pv b{font-size:15px}.pv span{font-size:13.5px;color:var(--mute)}
@@ -1153,8 +1155,8 @@ main,.hdr,body>footer{zoom:var(--z,1)}
         <div class="zeros"><div><b>0</b><span>foiz</span></div><div><b>0</b><span>ustama</span></div><div><b>0</b><span>penya</span></div></div>
       </div>
       <div>
-        <div class="lbl"><label for="age">To‘lovchi yoshi — sizga mos tizimlar</label></div>
-        <div class="age"><input type="range" id="age" min="16" max="70" value="19"><output id="ageO" for="age">19</output></div>
+        <div class="lbl" id="ageL">To‘lovchi yoshi — sizga mos tizimlar</div>
+        <div class="age" id="age" role="radiogroup" aria-labelledby="ageL"><button type="button" role="radio" data-age="16" aria-checked="false" tabindex="-1">16</button><button type="button" role="radio" data-age="18" aria-checked="false" tabindex="-1">18</button><button type="button" role="radio" data-age="19" aria-checked="true" tabindex="0">19</button><button type="button" role="radio" data-age="20" aria-checked="false" tabindex="-1">20–65</button></div>
         <div class="prov" id="prov"></div>
         <p class="src">Kerak: o‘z nomingizdagi bank kartasi. Har bir tizim limitni alohida tekshiradi. Rasmiylashtirish uchun menejeringizga yozing. To‘lovdan oldin <a href="https://englify.uz/public-offer" target="_blank" rel="noopener">ommaviy oferta</a> bilan tanishing.</p>
       </div>
@@ -1790,14 +1792,24 @@ main,.hdr,body>footer{zoom:var(--z,1)}
     $('#payNote').textContent = m === 1 ? '1 oylik to‘lov — faqat bir yo‘la (Click, Payme, Paynet).' : 'Bu tarifni bo‘lib to‘lash mumkin — foizsiz va ustamasiz. Pastda yoshingizga mos tizimlarni ko‘ring; rasmiylashtirish uchun menejeringizga yozing.';
   }
   bonus.onchange = renderCalc; renderCalc();
-  const PV = [['Yandex Split', 16, 0, '2 · 4 · 6 oy'], ['Alif Nasiya', 18, 0, 'faqat 3 oy'], ['Pay Later', 19, 0, '3 · 6 · 12 oy'], ['Uzum Nasiya', 20, 0, '3 · 6 · 12 oy'], ['Variant Nasiya', 21, 65, '3 · 6 · 12 oy']];
+  const PV = [['Yandex Split', 16, 0, '2 · 4 · 6 oy'], ['Alif Nasiya', 18, 0, 'faqat 3 oy'], ['Pay Later', 19, 0, '3 · 6 · 12 oy'], ['Uzum Nasiya', 20, 0, '3 · 6 · 12 oy']];
   const age = $('#age');
-  function renderProv() {
-    const a = +age.value; $('#ageO').textContent = a >= 70 ? '70+' : a;
-    $('#prov').innerHTML = PV.map(([n, min, max, t]) => { const ok = a >= min && (!max || a <= max);
-      return `<div class="pv${ok ? '' : ' off'}"><b>${n}</b><span>${t}</span><em>${ok ? 'Mos' : a < min ? min + ' yoshdan' : max + ' yoshgacha'}</em></div>`; }).join('');
+  if (age) {
+    const opts = [...age.querySelectorAll('[data-age]')];
+    let a = 19;
+    const renderProv = () => {
+      opts.forEach(o => { const on = +o.dataset.age === a; o.setAttribute('aria-checked', String(on)); o.tabIndex = on ? 0 : -1; });
+      $('#prov').innerHTML = PV.map(([n, min, max, t]) => { const ok = a >= min && (!max || a <= max);
+        return `<div class="pv${ok ? '' : ' off'}"><b>${n}</b><span>${t}</span><em>${ok ? 'Mos' : a < min ? min + ' yoshdan' : max + ' yoshgacha'}</em></div>`; }).join('');
+    };
+    opts.forEach(o => o.onclick = () => { a = +o.dataset.age; renderProv(); });
+    age.addEventListener('keydown', e => {
+      if (!/Arrow(Left|Right|Up|Down)/.test(e.key)) return; e.preventDefault();
+      const i = opts.findIndex(o => +o.dataset.age === a), j = (i + (/Right|Down/.test(e.key) ? 1 : -1) + opts.length) % opts.length;
+      a = +opts[j].dataset.age; renderProv(); opts[j].focus();
+    });
+    renderProv();
   }
-  age.oninput = renderProv; renderProv();
 
   /* ---------- reviews ---------- */
   const esc = t => String(t).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
@@ -1828,7 +1840,7 @@ main,.hdr,body>footer{zoom:var(--z,1)}
     ['Bepul sinab ko‘rsam bo‘ladimi?', 'Ha. Englify ilovasini yuklab oling va ro‘yxatdan o‘ting — birinchi dars bepul: <a href="https://apps.apple.com/us/app/englify/id6499320034" target="_blank" rel="noopener">App Store (iOS)</a> · <a href="https://play.google.com/store/apps/details?id=uz.englify.englify_client_mobile" target="_blank" rel="noopener">Google Play (Android)</a>. Bepul darsda Suhbatxona AI, progress tahlili va Resurslar bo‘limi ochilmaydi; ular to‘liq tarifda.'],
     ['Savolim bo‘lsa, kimga yozaman?', 'Sizga biriktirilgan menejerga — shu sahifani sizga yuborgan mutaxassisga. Kurs tanlash, daraja testi, to‘lov va bo‘lib to‘lash bo‘yicha u yordam beradi.'],
     ['Ishlayman, vaqtim kam. Qaysi kurs mos?', 'Jo‘shqin — jadvalsiz, ilova 24/7 ochiq: 15 daqiqa vaqtingiz bo‘lsa ham yetadi. Ustoz kerak bo‘lsa, Bo‘talog‘im darslari kechqurun 19:00–23:00 oralig‘ida.'],
-    ['Bo‘lib to‘lash bormi?', 'Ha — foiz, ustama va penyasiz. Uzum Nasiya, Alif Nasiya, Pay Later, Variant Nasiya va Yandex Split orqali. Bir necha oylik tariflar uchun; 1 oylik to‘lov faqat bir yo‘la. Rasmiylashtirish uchun menejeringizga yozing.'],
+    ['Bo‘lib to‘lash bormi?', 'Ha — foiz, ustama va penyasiz. Uzum Nasiya, Alif Nasiya, Pay Later va Yandex Split orqali. Bir necha oylik tariflar uchun; 1 oylik to‘lov faqat bir yo‘la. Rasmiylashtirish uchun menejeringizga yozing.'],
     ['Darajamni qanday bilaman?', 'Test ishlab darajangizni bilmoqchi bo‘lsangiz, sizga biriktirilgan mutaxassis menejerga murojaat qiling. Jonli darsli kurslar uchun test 15–20 daqiqa davom etadi; natijaga qarab mos guruh tanlanadi.'],
     ['Bonus oylar qachongacha amal qiladi?', 'Jo‘shqin 6 oylik tarifiga +1 oy, 12 oylikka +2 oy. Bonus oylar narxga qo‘shilmaydi — ular sovg‘a. Ma’lumot olgan kuningizning ertasi soat 23:59 gacha ulansangiz. Ulanish uchun menejeringizga yozing.'],
     ['Englify rasmiy kompaniyami?', 'Ha. “ENGLIFY” MCHJ 2022-yil 15-avgustda davlat ro‘yxatidan o‘tgan, STIR — 309 795 570. Guvohnoma va Adliya vazirligi ma’lumotnomasini «Rasmiy hujjatlar» bo‘limida ko‘rib, QR-kod orqali tekshirishingiz mumkin. Xizmat shartlari — <a href="https://englify.uz/public-offer" target="_blank" rel="noopener">ommaviy ofertada</a>.'],

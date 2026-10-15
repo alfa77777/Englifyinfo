@@ -7,6 +7,7 @@
 | Bo‘talog‘im | https://englifyinfo.netlify.app/botalogim  (short: /b) |
 | Speaking | https://englifyinfo.netlify.app/speaking  (short: /s) |
 | Individual 1:1 | https://englifyinfo.netlify.app/individual  (short: /i) |
+| IELTS | https://englifyinfo.netlify.app/ielts  (short: /ie) |
 
 ## Deploy
 - **GitHub (Englifyinfo repo):** copy everything in this folder to the repo root, commit, push. Netlify redeploys automatically.
