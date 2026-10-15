@@ -466,11 +466,10 @@ dialog.docdlg::backdrop{background:rgba(5,12,42,.82)}
 .zeros div{flex:1;text-align:center;padding:14px 6px;border-radius:var(--r-sm);background:var(--mint-bg)}
 .zeros b{display:block;font-size:28px;color:var(--mint);line-height:1}
 .zeros span{font-size:13px;color:var(--mute);font-weight:600}
-.age{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:4px 0 14px}
-.age button{padding:12px 6px;border-radius:var(--r-sm);border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-size:17px;font-weight:800;font-variant-numeric:tabular-nums;cursor:pointer;transition:background .25s,border-color .25s,color .25s,box-shadow .25s}
-.age button:hover{border-color:var(--blue)}
-.age button[aria-checked="true"]{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 8px 18px -10px rgba(45,107,255,.8)}
-.age button:focus-visible{outline:3px solid var(--blue-300);outline-offset:2px}
+.age{display:flex;align-items:center;gap:16px;margin:4px 0 14px}
+.age input{flex:1;accent-color:var(--blue);height:28px}
+.age output{font-size:28px;font-weight:800;min-width:3.2ch;text-align:right}
+.age-opts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:4px 0 14px}.age-opts button{justify-content:center;text-align:center;padding-inline:8px}@media (max-width:560px){.age-opts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .prov{display:grid;gap:8px}
 .pv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:10px;align-items:center;padding:12px 14px;border-radius:var(--r-sm);background:var(--bg);transition:opacity .35s,background .35s}
 .pv b{font-size:15px}.pv span{font-size:13.5px;color:var(--mute)}
@@ -764,6 +763,7 @@ main,.hdr,body>footer{zoom:var(--z,1)}
 }
 
 /* ================= plan pages ================= */
+.age-opts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:4px 0 14px}.age-opts button{justify-content:center;text-align:center;padding-inline:8px}@media (max-width:560px){.age-opts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .skip{position:absolute;left:-9999px;top:8px;z-index:100;padding:10px 16px;border-radius:12px;background:var(--blue);color:#fff;font-weight:700}
 .skip:focus{left:16px}
 .tp-hero .hero-grid{align-items:center}
@@ -903,14 +903,26 @@ main,.hdr,body>footer{zoom:var(--z,1)}
 .fx-visual{padding:clamp(22px,2.6vw,30px);position:sticky;top:calc(96px * var(--z,1))}
 .fx-visual .h3{margin:6px 0 18px}
 .fx-note{margin:16px 0 0;font-size:13.5px;color:var(--mute)}
-.wk-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:12px;align-items:center;padding:12px 14px;border-radius:var(--r-sm);background:var(--bg);margin-top:10px}
-.wk-lab{font-weight:700;font-size:14.5px}
-.wk-dots{display:flex;gap:6px}
-.wk-dots i{width:16px;height:16px;border-radius:6px;background:var(--lav)}
-.wk-dots i.b{background:var(--peach)}
-.fx-visual.in .wk-dots i{animation:fxDot .5s var(--ease-out) both;animation-delay:calc(var(--i) * 120ms + 200ms)}
-@keyframes fxDot{from{transform:scale(0)}}
-.wk-n{font-weight:800;color:var(--mute);font-size:14px}
+.gr-teacher{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:var(--r-sm);background:var(--sky-bg)}
+.gr-teacher b{display:block;font-size:15px}.gr-teacher small{font-size:13px;color:var(--mute);font-weight:600}
+.gr-av{width:42px;height:42px;border-radius:13px;background:var(--surface);display:grid;place-items:center;font-size:22px;flex:none}
+.gr-sup{background:var(--mint-bg);margin-top:0}
+.gr-seats{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;margin:14px 0}
+.gr-seats i{aspect-ratio:1;border-radius:50%;background:var(--lav-bg);border:2px solid var(--lav);opacity:.9}
+.fx-visual.in .gr-seats i{animation:fxDot .45s var(--ease-out) both;animation-delay:calc(var(--i) * 40ms + 200ms)}
+.ls-bar{display:flex;height:52px;border-radius:14px;overflow:hidden;font-weight:800;font-size:14px;color:#fff}
+.ls-bar span{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap}
+.ls-g{background:var(--lav)}
+.ls-s{background:linear-gradient(90deg,var(--blue),#5B8CFF)}
+.fx-visual.in .ls-bar span{animation:spGrow .8s var(--ease-out) both}
+.fx-visual.in .ls-s{animation-delay:.15s}
+.ls-cap{margin:10px 0 0;font-size:14px;color:var(--mute)}
+.ls-week{margin-top:18px;padding:14px;border-radius:var(--r-sm);background:var(--bg)}
+.ls-lab{display:block;font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-bottom:10px}
+.ls-chips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.ls-chip{display:grid;gap:2px;padding:10px 12px;border-radius:12px;background:var(--surface);border:1px solid var(--line);font-size:13px;color:var(--mute);font-weight:600}
+.ls-chip b{font-size:15px;color:var(--ink)}
+.fx-visual.in .ls-chip{animation:fxDot .5s var(--ease-out) both;animation-delay:calc(var(--i) * 120ms + 250ms)}
 .sp-bar{display:flex;height:48px;border-radius:14px;overflow:hidden;font-weight:800;font-size:14px;color:#fff}
 .sp-bar span{display:flex;align-items:center;padding:0 14px;white-space:nowrap}
 .sp-a{flex:7;background:linear-gradient(90deg,var(--blue),#5B8CFF)}
@@ -947,7 +959,7 @@ main,.hdr,body>footer{zoom:var(--z,1)}
   .sc-days{gap:4px}.sc-days span{height:36px;font-size:12px}
 }
 @media (max-width:400px){.fx-nums{grid-template-columns:minmax(0,1fr)}.fx-num{display:flex;align-items:center;gap:14px;padding:12px 16px}.fx-num b{font-size:26px;min-width:3.2ch}.fx-num span{margin:0;font-size:13.5px}}
-@media (prefers-reduced-motion:reduce){.fx-card:hover .fx-ic,.fx-visual.in .wk-dots i,.fx-visual.in .sp-a{animation:none}}
+@media (prefers-reduced-motion:reduce){.fx-card:hover .fx-ic,.fx-visual.in .gr-seats i,.fx-visual.in .ls-chip,.fx-visual.in .ls-bar span,.fx-visual.in .sp-a{animation:none}}
 </style>
 </head>
 <body>
@@ -1365,22 +1377,17 @@ main,.hdr,body>footer{zoom:var(--z,1)}
   renderTerms(); update(false);
 
   /* instalment providers by payer age (same data as the info page) */
-  const PV = [['Yandex Split', 16, 0, '2 · 4 · 6 oy'], ['Alif Nasiya', 18, 0, 'faqat 3 oy'], ['Pay Later', 19, 0, '3 · 6 · 12 oy'], ['Uzum Nasiya', 20, 0, '3 · 6 · 12 oy']];
-  const age = $('#age');
-  if (age) {
-    const opts = [...age.querySelectorAll('[data-age]')];
-    let a = 19;
+  const PV = [['Yandex Split', 16, '2 · 4 · 6 oy'], ['Alif Nasiya', 18, 'faqat 3 oy'], ['Pay Later', 19, '3 · 6 · 12 oy'], ['Uzum Nasiya', 20, '3 · 6 · 12 oy']];
+  /* payer age: pick one of four bands; each instalment service has its own minimum age */
+  const ageOpts = $('#ageOpts');
+  if (ageOpts) {
+    let age = 20;
     const renderProv = () => {
-      opts.forEach(o => { const on = +o.dataset.age === a; o.setAttribute('aria-checked', String(on)); o.tabIndex = on ? 0 : -1; });
-      $('#prov').innerHTML = PV.map(([n, min, max, t]) => { const ok = a >= min && (!max || a <= max);
-        return `<div class="pv${ok ? '' : ' off'}"><b>${n}</b><span>${t}</span><em>${ok ? 'Mos' : a < min ? min + ' yoshdan' : max + ' yoshgacha'}</em></div>`; }).join('');
+      ageOpts.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.age === age)));
+      $('#prov').innerHTML = PV.map(([n, min, t]) => { const ok = age >= min;
+        return `<div class="pv${ok ? '' : ' off'}"><b>${n}</b><span>${t}</span><em>${ok ? 'Mos' : min + ' yoshdan'}</em></div>`; }).join('');
     };
-    opts.forEach(o => o.onclick = () => { a = +o.dataset.age; renderProv(); });
-    age.addEventListener('keydown', e => {
-      if (!/Arrow(Left|Right|Up|Down)/.test(e.key)) return; e.preventDefault();
-      const i = opts.findIndex(o => +o.dataset.age === a), j = (i + (/Right|Down/.test(e.key) ? 1 : -1) + opts.length) % opts.length;
-      a = +opts[j].dataset.age; renderProv(); opts[j].focus();
-    });
+    ageOpts.querySelectorAll('button').forEach(b => b.onclick = () => { age = +b.dataset.age; renderProv(); });
     renderProv();
   }
 

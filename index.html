@@ -466,11 +466,10 @@ dialog.docdlg::backdrop{background:rgba(5,12,42,.82)}
 .zeros div{flex:1;text-align:center;padding:14px 6px;border-radius:var(--r-sm);background:var(--mint-bg)}
 .zeros b{display:block;font-size:28px;color:var(--mint);line-height:1}
 .zeros span{font-size:13px;color:var(--mute);font-weight:600}
-.age{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:4px 0 14px}
-.age button{padding:12px 6px;border-radius:var(--r-sm);border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-size:17px;font-weight:800;font-variant-numeric:tabular-nums;cursor:pointer;transition:background .25s,border-color .25s,color .25s,box-shadow .25s}
-.age button:hover{border-color:var(--blue)}
-.age button[aria-checked="true"]{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 8px 18px -10px rgba(45,107,255,.8)}
-.age button:focus-visible{outline:3px solid var(--blue-300);outline-offset:2px}
+.age{display:flex;align-items:center;gap:16px;margin:4px 0 14px}
+.age input{flex:1;accent-color:var(--blue);height:28px}
+.age output{font-size:28px;font-weight:800;min-width:3.2ch;text-align:right}
+.age-opts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:4px 0 14px}.age-opts button{justify-content:center;text-align:center;padding-inline:8px}@media (max-width:560px){.age-opts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .prov{display:grid;gap:8px}
 .pv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:10px;align-items:center;padding:12px 14px;border-radius:var(--r-sm);background:var(--bg);transition:opacity .35s,background .35s}
 .pv b{font-size:15px}.pv span{font-size:13.5px;color:var(--mute)}
@@ -1155,8 +1154,8 @@ main,.hdr,body>footer{zoom:var(--z,1)}
         <div class="zeros"><div><b>0</b><span>foiz</span></div><div><b>0</b><span>ustama</span></div><div><b>0</b><span>penya</span></div></div>
       </div>
       <div>
-        <div class="lbl" id="ageL">To‘lovchi yoshi — sizga mos tizimlar</div>
-        <div class="age" id="age" role="radiogroup" aria-labelledby="ageL"><button type="button" role="radio" data-age="16" aria-checked="false" tabindex="-1">16</button><button type="button" role="radio" data-age="18" aria-checked="false" tabindex="-1">18</button><button type="button" role="radio" data-age="19" aria-checked="true" tabindex="0">19</button><button type="button" role="radio" data-age="20" aria-checked="false" tabindex="-1">20–65</button></div>
+        <div class="lbl" id="ageLbl">To‘lovchi yoshi — sizga mos tizimlar</div>
+        <div class="pills age-opts" id="ageOpts" role="group" aria-labelledby="ageLbl"><button type="button" data-age="16" aria-pressed="false">16–17 yosh</button><button type="button" data-age="18" aria-pressed="false">18 yosh</button><button type="button" data-age="19" aria-pressed="false">19 yosh</button><button type="button" data-age="20" aria-pressed="true">20–65 yosh</button></div>
         <div class="prov" id="prov"></div>
         <p class="src">Kerak: o‘z nomingizdagi bank kartasi. Har bir tizim limitni alohida tekshiradi. Rasmiylashtirish uchun menejeringizga yozing. To‘lovdan oldin <a href="https://englify.uz/public-offer" target="_blank" rel="noopener">ommaviy oferta</a> bilan tanishing.</p>
       </div>
@@ -1792,22 +1791,17 @@ main,.hdr,body>footer{zoom:var(--z,1)}
     $('#payNote').textContent = m === 1 ? '1 oylik to‘lov — faqat bir yo‘la (Click, Payme, Paynet).' : 'Bu tarifni bo‘lib to‘lash mumkin — foizsiz va ustamasiz. Pastda yoshingizga mos tizimlarni ko‘ring; rasmiylashtirish uchun menejeringizga yozing.';
   }
   bonus.onchange = renderCalc; renderCalc();
-  const PV = [['Yandex Split', 16, 0, '2 · 4 · 6 oy'], ['Alif Nasiya', 18, 0, 'faqat 3 oy'], ['Pay Later', 19, 0, '3 · 6 · 12 oy'], ['Uzum Nasiya', 20, 0, '3 · 6 · 12 oy']];
-  const age = $('#age');
-  if (age) {
-    const opts = [...age.querySelectorAll('[data-age]')];
-    let a = 19;
+  const PV = [['Yandex Split', 16, '2 · 4 · 6 oy'], ['Alif Nasiya', 18, 'faqat 3 oy'], ['Pay Later', 19, '3 · 6 · 12 oy'], ['Uzum Nasiya', 20, '3 · 6 · 12 oy']];
+  /* payer age: pick one of four bands; each instalment service has its own minimum age */
+  const ageOpts = $('#ageOpts');
+  if (ageOpts) {
+    let age = 20;
     const renderProv = () => {
-      opts.forEach(o => { const on = +o.dataset.age === a; o.setAttribute('aria-checked', String(on)); o.tabIndex = on ? 0 : -1; });
-      $('#prov').innerHTML = PV.map(([n, min, max, t]) => { const ok = a >= min && (!max || a <= max);
-        return `<div class="pv${ok ? '' : ' off'}"><b>${n}</b><span>${t}</span><em>${ok ? 'Mos' : a < min ? min + ' yoshdan' : max + ' yoshgacha'}</em></div>`; }).join('');
+      ageOpts.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.age === age)));
+      $('#prov').innerHTML = PV.map(([n, min, t]) => { const ok = age >= min;
+        return `<div class="pv${ok ? '' : ' off'}"><b>${n}</b><span>${t}</span><em>${ok ? 'Mos' : min + ' yoshdan'}</em></div>`; }).join('');
     };
-    opts.forEach(o => o.onclick = () => { a = +o.dataset.age; renderProv(); });
-    age.addEventListener('keydown', e => {
-      if (!/Arrow(Left|Right|Up|Down)/.test(e.key)) return; e.preventDefault();
-      const i = opts.findIndex(o => +o.dataset.age === a), j = (i + (/Right|Down/.test(e.key) ? 1 : -1) + opts.length) % opts.length;
-      a = +opts[j].dataset.age; renderProv(); opts[j].focus();
-    });
+    ageOpts.querySelectorAll('button').forEach(b => b.onclick = () => { age = +b.dataset.age; renderProv(); });
     renderProv();
   }
 

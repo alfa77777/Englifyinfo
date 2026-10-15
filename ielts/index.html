@@ -1,12 +1,12 @@
 <title>IELTS — Englify tarifi</title>
-<meta name="description" content="Yopiq guruhda IELTS 8+ o‘qituvchi bilan Zoom darslari, haftasiga 3 × 80 daqiqa. 3 oylik tarifda oyiga 750 000 so‘m (−12%).">
+<meta name="description" content="Yopiq guruh (16 tagacha), kamida IELTS 8 darajali ustoz bilan Zoom darslari haftasiga 3 × 80 daqiqa. 3 oylik tarifda oyiga 750 000 so‘m (−12%).">
 <link rel="canonical" href="https://englifyinfo.netlify.app/ielts">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Englify">
 <meta property="og:locale" content="uz_UZ">
 <meta property="og:url" content="https://englifyinfo.netlify.app/ielts">
 <meta property="og:title" content="IELTS — Englify tarifi">
-<meta property="og:description" content="Yopiq guruhda IELTS 8+ o‘qituvchi bilan Zoom darslari, haftasiga 3 × 80 daqiqa. 3 oylik tarifda oyiga 750 000 so‘m (−12%).">
+<meta property="og:description" content="Yopiq guruh (16 tagacha), kamida IELTS 8 darajali ustoz bilan Zoom darslari haftasiga 3 × 80 daqiqa. 3 oylik tarifda oyiga 750 000 so‘m (−12%).">
 <meta property="og:image" content="https://englifyinfo.netlify.app/og/ielts.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -466,11 +466,10 @@ dialog.docdlg::backdrop{background:rgba(5,12,42,.82)}
 .zeros div{flex:1;text-align:center;padding:14px 6px;border-radius:var(--r-sm);background:var(--mint-bg)}
 .zeros b{display:block;font-size:28px;color:var(--mint);line-height:1}
 .zeros span{font-size:13px;color:var(--mute);font-weight:600}
-.age{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:4px 0 14px}
-.age button{padding:12px 6px;border-radius:var(--r-sm);border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-size:17px;font-weight:800;font-variant-numeric:tabular-nums;cursor:pointer;transition:background .25s,border-color .25s,color .25s,box-shadow .25s}
-.age button:hover{border-color:var(--blue)}
-.age button[aria-checked="true"]{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 8px 18px -10px rgba(45,107,255,.8)}
-.age button:focus-visible{outline:3px solid var(--blue-300);outline-offset:2px}
+.age{display:flex;align-items:center;gap:16px;margin:4px 0 14px}
+.age input{flex:1;accent-color:var(--blue);height:28px}
+.age output{font-size:28px;font-weight:800;min-width:3.2ch;text-align:right}
+.age-opts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:4px 0 14px}.age-opts button{justify-content:center;text-align:center;padding-inline:8px}@media (max-width:560px){.age-opts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .prov{display:grid;gap:8px}
 .pv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:10px;align-items:center;padding:12px 14px;border-radius:var(--r-sm);background:var(--bg);transition:opacity .35s,background .35s}
 .pv b{font-size:15px}.pv span{font-size:13.5px;color:var(--mute)}
@@ -764,6 +763,7 @@ main,.hdr,body>footer{zoom:var(--z,1)}
 }
 
 /* ================= plan pages ================= */
+.age-opts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:4px 0 14px}.age-opts button{justify-content:center;text-align:center;padding-inline:8px}@media (max-width:560px){.age-opts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .skip{position:absolute;left:-9999px;top:8px;z-index:100;padding:10px 16px;border-radius:12px;background:var(--blue);color:#fff;font-weight:700}
 .skip:focus{left:16px}
 .tp-hero .hero-grid{align-items:center}
@@ -903,6 +903,45 @@ main,.hdr,body>footer{zoom:var(--z,1)}
 .fx-visual{padding:clamp(22px,2.6vw,30px);position:sticky;top:calc(96px * var(--z,1))}
 .fx-visual .h3{margin:6px 0 18px}
 .fx-note{margin:16px 0 0;font-size:13.5px;color:var(--mute)}
+.zm-win{border-radius:18px;overflow:hidden;background:#0E1424;border:1px solid #232C45;box-shadow:0 24px 50px -28px rgba(5,12,42,.8);color:#E7EEFF}
+.zm-top{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#151C30;font-size:12.5px;font-weight:700;color:#9FB0DE}
+.zm-live{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;background:rgba(255,59,92,.16);color:#FF6B85;font-weight:800;letter-spacing:.06em}
+.zm-live i{width:7px;height:7px;border-radius:50%;background:#FF3B5C;animation:zmBlink 1.4s ease-in-out infinite}
+@keyframes zmBlink{50%{opacity:.25}}
+.zm-title{flex:1}
+.zm-dur{padding:3px 9px;border-radius:8px;background:rgba(255,255,255,.07);color:#DCE6FF}
+.zm-teacher{position:relative;display:flex;align-items:center;gap:12px;margin:12px 12px 0;padding:14px;border-radius:14px;
+  background:radial-gradient(120% 140% at 0% 0%,#2A4BB8 0%,#16245A 60%,#111A3A 100%);box-shadow:inset 0 0 0 2px #45D6A0}
+.zm-tav{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-size:24px;background:rgba(255,255,255,.12)}
+.zm-teacher b{display:block;font-size:15px;color:#fff}.zm-teacher small{font-size:12.5px;color:#B9C8F0;font-weight:600}
+.zm-wave{margin-left:auto;display:flex;align-items:center;gap:3px;height:22px}
+.zm-wave i{width:3px;height:30%;border-radius:2px;background:#45D6A0;animation:zmWave 1s ease-in-out infinite}
+.zm-wave i:nth-child(2){animation-delay:.15s}.zm-wave i:nth-child(3){animation-delay:.3s}.zm-wave i:nth-child(4){animation-delay:.45s}.zm-wave i:nth-child(5){animation-delay:.6s}
+@keyframes zmWave{50%{height:100%}}
+.zm-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;padding:12px}
+.zm-tile{position:relative;aspect-ratio:1;border-radius:10px;display:grid;place-items:end center;overflow:hidden;background:#1B243D;color:var(--zc)}
+.zm-tile svg{width:78%;height:78%;margin-bottom:-6%;opacity:.95}
+.zc-sky{--zc:#7EA4FF}.zc-lav{--zc:#A893FF}.zc-peach{--zc:#FF9E6B}.zc-mint{--zc:#45D6A0}.zc-pink{--zc:#FF79A8}.zc-sun{--zc:#FFC54F}
+.zm-tile.talk{animation:zmTalk 6.4s linear infinite;animation-delay:var(--d)}
+@keyframes zmTalk{0%,2%{box-shadow:inset 0 0 0 2px #45D6A0}20%{box-shadow:inset 0 0 0 2px #45D6A0}23%,100%{box-shadow:inset 0 0 0 0 transparent}}
+.zm-tile.me{background:linear-gradient(160deg,#2D6BFF,#1A3FB0);color:#fff;box-shadow:0 0 0 2px #fff,0 0 18px 2px rgba(91,140,255,.75);animation:zmMe 2.4s ease-in-out infinite}
+@keyframes zmMe{50%{box-shadow:0 0 0 2px #fff,0 0 4px 0 rgba(91,140,255,.4)}}
+.zm-me{position:absolute;top:3px;left:0;right:0;text-align:center;font-size:10px;font-weight:800;letter-spacing:.04em;z-index:1}
+.fx-visual.in .zm-tile:not(.talk):not(.me){animation:zmIn .45s var(--ease-out) both;animation-delay:calc(var(--k) * 35ms + 150ms)}
+@keyframes zmIn{from{transform:scale(.4);opacity:0}}
+.zm-bar{display:flex;align-items:center;gap:8px;padding:10px 12px;background:#151C30;font-size:15px}
+.zm-bar span{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.07)}
+.zm-bar .zm-cnt{width:auto;margin-left:auto;padding:0 12px;border-radius:999px;font-size:12.5px;font-weight:800;color:#DCE6FF}
+.zm-sup{display:flex;align-items:center;gap:12px;margin-top:12px;padding:12px 14px;border-radius:var(--r-sm);background:var(--mint-bg)}
+.zm-sav{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:20px;background:var(--surface)}
+.zm-sup b{display:block;font-size:14.5px}.zm-sup small{font-size:12.5px;color:var(--mute);font-weight:600}
+.zm-on{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;color:var(--mint)}
+.zm-on i{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 0 rgba(19,162,110,.5);animation:zmPing 1.8s ease-out infinite}
+@keyframes zmPing{70%{box-shadow:0 0 0 7px rgba(19,162,110,0)}100%{box-shadow:0 0 0 0 rgba(19,162,110,0)}}
+.zm-facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.zm-facts span{padding:7px 12px;border-radius:999px;background:var(--bg);font-weight:700;font-size:13px}
+@media (max-width:420px){.zm-grid{gap:4px;padding:10px}.zm-tile{border-radius:7px}.zm-me{font-size:8.5px}.zm-teacher{padding:12px}.zm-tav{width:40px;height:40px;font-size:20px}}
+@media (prefers-reduced-motion:reduce){.zm-live i,.zm-wave i,.zm-tile.talk,.zm-tile.me,.zm-on i,.fx-visual.in .zm-tile{animation:none!important}}
 .ls-bar{display:flex;height:52px;border-radius:14px;overflow:hidden;font-weight:800;font-size:14px;color:#fff}
 .ls-bar span{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap}
 .ls-g{background:var(--lav)}
@@ -997,17 +1036,18 @@ main,.hdr,body>footer{zoom:var(--z,1)}
     <div>
       <p class="tp-kick fade-in"><span class="dot" aria-hidden="true"></span>Siz tanlagan tarif</p>
       <h1 class="h1"><span class="line"><span style="--i:0">IELTS</span></span></h1>
-      <p class="lead fade-in" style="--d:450ms">Yopiq guruhda IELTS 8+ o‘qituvchi bilan Zoom darslari, platformada esa har bir skill bo‘yicha video darsliklar va avtomatik tekshiriladigan vazifalar.</p>
-      <ul class="tp-tags fade-in" style="--d:550ms"><li>Yopiq guruh</li><li>Zoom</li><li>Platforma</li></ul>
+      <p class="lead fade-in" style="--d:450ms">Yopiq guruhda kamida IELTS 8 darajali ustoz bilan Zoom darslari va Teacher Azamning maxsus platformasi.</p>
+      <ul class="tp-tags fade-in" style="--d:550ms"><li>Yopiq guruh · IELTS 8+ ustoz</li><li>Zoom</li><li>Platforma</li><li>Movie · Library · Podcast</li></ul>
       <div class="hero-cta fade-in" style="--d:650ms">
         <a class="btn btn-primary magnet" href="#narx">Narx va muddat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#qadam">Keyingi qadam</a>
       </div>
     </div>
     <div class="tp-card fade-in" style="--d:300ms">
-      <div class="top"><span class="chip c-lav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c.8-3.5 3.2-5.5 6-5.5s5.2 2 6 5.5"/></svg></span><div><b>IELTS</b><span>Yopiq guruh · IELTS tayyorlov</span></div></div>
+      <div class="top"><span class="chip c-mint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg></span><div><b>IELTS</b><span>Yopiq guruh · IELTS 8+ ustoz</span></div></div>
       <div class="from num">750 000 so‘m<span class="off">−12%</span><small>oyiga, 3 oylik tarifda · 1 oylik — 850 000 so‘m</small></div>
-      <div class="st"><div><b>16</b><span>o‘quvchigacha — guruhda</span></div><div><b>8+</b><span>IELTS — o‘qituvchi</span></div><div><b>3 × 80</b><span>daqiqa — haftasiga</span></div><div><b>3–4 yil</b><span>o‘qituvchi tajribasi</span></div></div>
-      <p class="fit"><b>Kimga mos:</b> IELTS imtihoniga tayyorlanayotganlarga.</p>
+      <div class="st"><div><b>16</b><span>o‘quvchigacha — yopiq guruh</span></div><div><b>IELTS 8+</b><span>darajali ustoz</span></div><div><b>3–4 yil</b><span>ustoz tajribasi</span></div><div><b>3 × 80</b><span>daqiqa — haftasiga, Zoom</span></div></div>
+      <p class="fit"><b>Kimga mos:</b> IELTS’ga tayyorlanayotgan va tajribali ustoz bilan jonli darslar istaganlarga.</p>
     </div>
   </div>
 </section>
@@ -1015,11 +1055,13 @@ main,.hdr,body>footer{zoom:var(--z,1)}
 
 <section class="sec fx-sec" id="ichida">
   <div class="wrap">
-    <div class="sec-head"><div><p class="eyebrow rv">Tarif ichida</p><h2 class="h2 rv" style="--i:1">IELTS — <span class="hl">yuqori ball uchun 🎯</span></h2>
-      <p class="lead rv" style="--i:2">Yopiq guruh, o‘qituvchi bilan Zoom darslari, maxsus platforma va ingliz tilidagi kontent — bitta tarifda.</p></div></div>
-    <div class="fx-nums"><div class="fx-num rv" style="--i:0"><b class="num">16</b><span>o‘quvchigacha guruh</span></div><div class="fx-num rv" style="--i:1"><b class="num">8+</b><span>IELTS — o‘qituvchi</span></div><div class="fx-num rv" style="--i:2"><b class="num">3 × 80</b><span>daqiqa — haftasiga</span></div></div>
-    <div class="fx-split"><div class="fx-visual card rv"><p class="eyebrow">Zoom darslari</p><h3 class="h3">Haftasiga 3 kun — 80 daqiqadan</h3><div class="ls-week" style="margin-top:0"><span class="ls-lab">Haftasiga 3 marta</span><div class="ls-chips"><span class="ls-chip" style="--i:0"><b>1-dars</b>80 daq</span><span class="ls-chip" style="--i:1"><b>2-dars</b>80 daq</span><span class="ls-chip" style="--i:2"><b>3-dars</b>80 daq</span></div></div><p class="fx-note">O‘qituvchi bilan Zoom orqali yuzma-yuz darslar.</p></div><div class="fx-side"><div class="fx-grid fx-grid-2"><article class="fx-card rv" style="--i:0"><span class="fx-ic fx-sky" aria-hidden="true">🔒</span><div><h3>Yopiq guruh</h3><p>Maksimum 16 tagacha o‘quvchi. Guruhga 3–4 yillik tajribaga ega, IELTS 8+ darajali o‘qituvchi va texnik muammolar bo‘yicha support manager biriktiriladi.</p></div></article><article class="fx-card rv" style="--i:1"><span class="fx-ic fx-lav" aria-hidden="true">🎥</span><div><h3>Zoom darslari</h3><p>O‘qituvchi bilan Zoom orqali yuzma-yuz darslar — haftasiga 3 kun, 80 daqiqadan.</p></div></article><article class="fx-card rv" style="--i:0"><span class="fx-ic fx-peach" aria-hidden="true">💻</span><div><h3>Platformadagi darslar</h3><p>Maxsus platformamizda Teacher Azam tayyorlagan, har bir amaliy skill bo‘yicha video darsliklar. Har bir mavzu bo‘yicha vazifalar avtomatik tekshiriladi.</p></div></article><article class="fx-card rv" style="--i:1"><span class="fx-ic fx-mint" aria-hidden="true">🎬</span><div><h3>Movie, Library, Podcast</h3><p>Darajangizga mos jahon kinolari, kitoblar va podkastlar — barchasi ingliz tilida.</p></div></article></div></div></div>
-    <div class="fx-foot novid rv"><p class="tp-fit"><b>Kimga mos:</b> IELTS imtihoniga tayyorlanayotganlarga.</p></div>
+    <div class="sec-head"><div><p class="eyebrow rv">Tarif ichida</p><h2 class="h2 rv" style="--i:1">IELTS — <span class="hl">natija uchun to‘liq to‘plam 💥</span></h2>
+      <p class="lead rv" style="--i:2">Yopiq guruh, tajribali ustoz va maxsus platforma — barchasi bitta tarifda.</p></div></div>
+    <div class="fx-nums"><div class="fx-num rv" style="--i:0"><b class="num">16</b><span>o‘quvchigacha — guruh</span></div><div class="fx-num rv" style="--i:1"><b class="num">8+</b><span>IELTS — ustoz darajasi</span></div><div class="fx-num rv" style="--i:2"><b class="num">3 × 80</b><span>daqiqa — haftasiga</span></div></div>
+    
+    <div class="fx-split"><div class="fx-visual card rv zm"><p class="eyebrow">Sizning guruhingiz</p><h3 class="h3">Jonli Zoom darsi — 16 tagacha o‘quvchi</h3><div class="zm-win" role="img" aria-label="Zoom darsi: ustoz va 16 tagacha o‘quvchi"><div class="zm-top"><span class="zm-live"><i></i>LIVE</span><span class="zm-title">IELTS · Zoom</span><span class="zm-dur">80 daq</span></div><div class="zm-teacher"><span class="zm-tav">🎓</span><div><b>Ustoz</b><small>IELTS 8+ · 3–4 yillik tajriba</small></div><span class="zm-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div><div class="zm-grid"><span class="zm-tile zc-sky" style="--k:0"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6z"/></svg></span><span class="zm-tile zc-lav" style="--k:1"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6z"/></svg></span><span class="zm-tile zc-peach talk" style="--k:2;--d:0s"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6z"/></svg></span><span class="zm-tile zc-mint" style="--k:3"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6z"/></svg></span><span class="zm-tile zc-pink" style="--k:4"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6z"/></svg></span><span class="zm-tile me" style="--k:5"><span class="zm-me">Siz</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6z"/></svg></span><span class="zm-tile zc-sky talk" style="--k:6;--d:4.8s"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6z"/></svg></span><span class="zm-tile zc-lav" style="--k:7"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6z"/></svg></span><span class="zm-tile zc-peach" style="--k:8"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6z"/></svg></span><span class="zm-tile zc-mint talk" style="--k:9;--d:1.6s"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6z"/></svg></span><span class="zm-tile zc-pink" style="--k:10"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6z"/></svg></span><span class="zm-tile zc-sun" style="--k:11"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6z"/></svg></span><span class="zm-tile zc-sky" style="--k:12"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6z"/></svg></span><span class="zm-tile zc-lav talk" style="--k:13;--d:3.2s"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6z"/></svg></span><span class="zm-tile zc-peach" style="--k:14"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6z"/></svg></span><span class="zm-tile zc-mint" style="--k:15"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6z"/></svg></span></div><div class="zm-bar" aria-hidden="true"><span>🎙️</span><span>📷</span><span>💬</span><span class="zm-cnt">👥 16 tagacha</span></div></div><div class="zm-sup"><span class="zm-sav">🛠️</span><div><b>Support manager</b><small>texnik muammolar bo‘yicha</small></div><span class="zm-on"><i></i>onlayn</span></div><div class="zm-facts"><span>📅 Haftasiga 3 kun</span><span>⏱️ 80 daqiqadan</span><span>🔒 Yopiq guruh</span></div></div><div class="fx-side"><div class="fx-grid fx-grid-2"><article class="fx-card rv" style="--i:0"><span class="fx-ic fx-sky" aria-hidden="true">👥</span><div><h3>Yopiq guruh</h3><p>Maksimum 16 tagacha o‘quvchi. Guruhga 3–4 yillik tajribaga ega, kamida IELTS 8 darajali o‘qituvchi va texnik muammolar bo‘yicha support manager biriktiriladi.</p></div></article><article class="fx-card rv" style="--i:1"><span class="fx-ic fx-lav" aria-hidden="true">💻</span><div><h3>Zoom darslari</h3><p>O‘qituvchi bilan yuzma-yuz Zoom orqali — haftasiga 3 kun, 80 daqiqadan.</p></div></article><article class="fx-card rv" style="--i:2"><span class="fx-ic fx-peach" aria-hidden="true">🎥</span><div><h3>Platformadagi darslar</h3><p>Teacher Azam har bir amaliy skill bo‘yicha tayyorlagan maxsus video darsliklar. Har bir mavzu bo‘yicha avtomatik tekshiriladigan vazifalar.</p></div></article><article class="fx-card rv" style="--i:0"><span class="fx-ic fx-mint" aria-hidden="true">🎬</span><div><h3>Movie, Library, Podcast</h3><p>Darajangizga mos jahon kinolari, kitoblar va podkastlar — barchasi ingliz tilida.</p></div></article></div></div></div>
+    
+    <div class="fx-foot rv novid"><p class="tp-fit"><b>Kimga mos:</b> IELTS’ga tayyorlanayotgan va tajribali ustoz bilan jonli darslar istaganlarga.</p></div>
   </div>
 </section>
 
@@ -1057,8 +1099,8 @@ main,.hdr,body>footer{zoom:var(--z,1)}
         <div class="zeros"><div><b>0</b><span>foiz</span></div><div><b>0</b><span>ustama</span></div><div><b>0</b><span>penya</span></div></div>
       </div>
       <div>
-        <div class="lbl" id="ageL">To‘lovchi yoshi — sizga mos tizimlar</div>
-        <div class="age" id="age" role="radiogroup" aria-labelledby="ageL"><button type="button" role="radio" data-age="16" aria-checked="false" tabindex="-1">16</button><button type="button" role="radio" data-age="18" aria-checked="false" tabindex="-1">18</button><button type="button" role="radio" data-age="19" aria-checked="true" tabindex="0">19</button><button type="button" role="radio" data-age="20" aria-checked="false" tabindex="-1">20–65</button></div>
+        <div class="lbl" id="ageLbl">To‘lovchi yoshi — sizga mos tizimlar</div>
+        <div class="pills age-opts" id="ageOpts" role="group" aria-labelledby="ageLbl"><button type="button" data-age="16" aria-pressed="false">16–17 yosh</button><button type="button" data-age="18" aria-pressed="false">18 yosh</button><button type="button" data-age="19" aria-pressed="false">19 yosh</button><button type="button" data-age="20" aria-pressed="true">20–65 yosh</button></div>
         <div class="prov" id="prov"></div>
         <p class="src">Kerak: o‘z nomingizdagi bank kartasi. Har bir tizim limitni alohida tekshiradi. Rasmiylashtirish uchun menejeringizga yozing.</p>
       </div>
@@ -1069,9 +1111,10 @@ main,.hdr,body>footer{zoom:var(--z,1)}
 <section class="sec" id="qadam" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head"><div><p class="eyebrow rv">Keyingi qadam</p><h2 class="h2 rv" style="--i:1">To‘rt qadamda — <span class="hl">darsgacha</span></h2></div></div>
-    <ol class="tp-steps"><li class="rv" style="--i:0"><b>Muddatni tanlang</b><span>Pastdagi narxlardan o‘zingizga mos muddatni belgilang.</span></li><li class="rv" style="--i:1"><b>Menejeringizga yozing</b><span>Tanlovingizni yuboring — menejer uni tasdiqlaydi va to‘lovni rasmiylashtirishda yordam beradi.</span></li><li class="rv" style="--i:2"><b>To‘lov</b><span>Bir yo‘la (Click, Payme, Paynet) yoki bir necha oylik tarifda bo‘lib to‘lash — foizsiz.</span></li><li class="rv" style="--i:3"><b>Yopiq guruh</b><span>Yopiq guruhga qo‘shilasiz. Darslar Zoom’da, o‘qituvchi bilan yuzma-yuz — haftasiga 3 kun, 80 daqiqadan.</span></li></ol>
+    <ol class="tp-steps"><li class="rv" style="--i:0"><b>Muddatni tanlang</b><span>Pastdagi narxlardan o‘zingizga mos muddatni belgilang.</span></li><li class="rv" style="--i:1"><b>Menejeringizga yozing</b><span>Tanlovingizni yuboring — menejer uni tasdiqlaydi va to‘lovni rasmiylashtirishda yordam beradi.</span></li><li class="rv" style="--i:2"><b>To‘lov</b><span>Bir yo‘la (Click, Payme, Paynet) yoki bir necha oylik tarifda bo‘lib to‘lash — foizsiz.</span></li><li class="rv" style="--i:3"><b>Yopiq guruhga qo‘shilish</b><span>Guruhga ustoz va texnik support manager biriktiriladi. Zoom darslari — haftasiga 3 kun, 80 daqiqadan.</span></li></ol>
   </div>
 </section>
+
 
 <section class="sec" id="savollar" style="padding-top:0">
   <div class="wrap">
@@ -1268,7 +1311,7 @@ main,.hdr,body>footer{zoom:var(--z,1)}
 
 
   /* ================= plan page logic ================= */
-  const D = {"name": "IELTS", "terms": [[1, 850000], [3, 2250000]], "faq": [["Savolim bo‘lsa, kimga yozaman?", "Sizga biriktirilgan menejerga — shu sahifani sizga yuborgan mutaxassisga. Muddat, to‘lov va bo‘lib to‘lash bo‘yicha u yordam beradi."], ["Darslar qachon va qayerda?", "Zoom’da, o‘qituvchi bilan yuzma-yuz: haftasiga 3 kun, 80 daqiqadan. Aniq jadval bo‘yicha menejeringizga yozing."], ["Guruhda necha kishi bo‘ladi?", "Yopiq guruhda maksimum 16 tagacha o‘quvchi. Guruhga 3–4 yillik tajribaga ega, IELTS 8+ darajali o‘qituvchi biriktiriladi."], ["Texnik muammo chiqsa-chi?", "Har bir guruhga texnik muammolar bo‘yicha support manager biriktirilgan — unga yozasiz."], ["Platformada nimalar bor?", "Teacher Azam tomonidan har bir amaliy skill bo‘yicha tayyorlangan video darsliklar va avtomatik tekshiriladigan vazifalar. Shuningdek, Movie, Library, Podcast — darajangizga mos kino, kitob va podkastlar, barchasi ingliz tilida."], ["Bo‘lib to‘lash bormi?", "Ha — foiz, ustama va penyasiz: Uzum Nasiya, Alif Nasiya, Pay Later va Yandex Split. Bir necha oylik tariflar uchun; 1 oylik to‘lov faqat bir yo‘la. Rasmiylashtirish uchun menejeringizga yozing."], ["Englify rasmiy kompaniyami?", "Ha. “ENGLIFY” MCHJ 2022-yil 15-avgustda davlat ro‘yxatidan o‘tgan, STIR — 309 795 570. Xizmat shartlari — <a href=\"https://englify.uz/public-offer\" target=\"_blank\" rel=\"noopener\">ommaviy oferta</a>da."]], "multi": true};
+  const D = {"name": "IELTS", "terms": [[1, 850000], [3, 2250000]], "faq": [["Savolim bo‘lsa, kimga yozaman?", "Sizga biriktirilgan menejerga — shu sahifani sizga yuborgan mutaxassisga. Muddat, to‘lov va bo‘lib to‘lash bo‘yicha u yordam beradi."], ["Ustoz kim?", "Kamida IELTS 8 darajasiga erishgan, 3–4 yillik tajribaga ega o‘qituvchi — aynan sizning guruhingizga biriktiriladi."], ["Darslar qanday o‘tadi?", "O‘qituvchi bilan yuzma-yuz Zoom orqali — haftasiga 3 kun, 80 daqiqadan."], ["Guruhda necha kishi bo‘ladi?", "Maksimum 16 tagacha o‘quvchi. Texnik muammolar bo‘yicha guruhga support manager biriktirilgan."], ["Platformada nima bor?", "Teacher Azam har bir amaliy skill bo‘yicha tayyorlagan maxsus video darsliklar; har bir mavzu bo‘yicha avtomatik tekshiriladigan vazifalar; darajangizga mos jahon kinolari, kitoblar va podkastlar — barchasi ingliz tilida."], ["Bo‘lib to‘lash bormi?", "Ha — foiz, ustama va penyasiz: Uzum Nasiya, Alif Nasiya, Pay Later va Yandex Split. Bir necha oylik tariflar uchun; 1 oylik to‘lov faqat bir yo‘la. Rasmiylashtirish uchun menejeringizga yozing."], ["Englify rasmiy kompaniyami?", "Ha. “ENGLIFY” MCHJ 2022-yil 15-avgustda davlat ro‘yxatidan o‘tgan, STIR — 309 795 570. Xizmat shartlari — <a href=\"https://englify.uz/public-offer\" target=\"_blank\" rel=\"noopener\">ommaviy oferta</a>da."]], "multi": true};
   const base = D.terms[0][1];
   const offPct = (perMonth) => Math.round((1 - perMonth / base) * 100);
   let sel = D.terms.length - 1, pay = 1;
@@ -1344,22 +1387,17 @@ main,.hdr,body>footer{zoom:var(--z,1)}
   renderTerms(); update(false);
 
   /* instalment providers by payer age (same data as the info page) */
-  const PV = [['Yandex Split', 16, 0, '2 · 4 · 6 oy'], ['Alif Nasiya', 18, 0, 'faqat 3 oy'], ['Pay Later', 19, 0, '3 · 6 · 12 oy'], ['Uzum Nasiya', 20, 0, '3 · 6 · 12 oy']];
-  const age = $('#age');
-  if (age) {
-    const opts = [...age.querySelectorAll('[data-age]')];
-    let a = 19;
+  const PV = [['Yandex Split', 16, '2 · 4 · 6 oy'], ['Alif Nasiya', 18, 'faqat 3 oy'], ['Pay Later', 19, '3 · 6 · 12 oy'], ['Uzum Nasiya', 20, '3 · 6 · 12 oy']];
+  /* payer age: pick one of four bands; each instalment service has its own minimum age */
+  const ageOpts = $('#ageOpts');
+  if (ageOpts) {
+    let age = 20;
     const renderProv = () => {
-      opts.forEach(o => { const on = +o.dataset.age === a; o.setAttribute('aria-checked', String(on)); o.tabIndex = on ? 0 : -1; });
-      $('#prov').innerHTML = PV.map(([n, min, max, t]) => { const ok = a >= min && (!max || a <= max);
-        return `<div class="pv${ok ? '' : ' off'}"><b>${n}</b><span>${t}</span><em>${ok ? 'Mos' : a < min ? min + ' yoshdan' : max + ' yoshgacha'}</em></div>`; }).join('');
+      ageOpts.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.age === age)));
+      $('#prov').innerHTML = PV.map(([n, min, t]) => { const ok = age >= min;
+        return `<div class="pv${ok ? '' : ' off'}"><b>${n}</b><span>${t}</span><em>${ok ? 'Mos' : min + ' yoshdan'}</em></div>`; }).join('');
     };
-    opts.forEach(o => o.onclick = () => { a = +o.dataset.age; renderProv(); });
-    age.addEventListener('keydown', e => {
-      if (!/Arrow(Left|Right|Up|Down)/.test(e.key)) return; e.preventDefault();
-      const i = opts.findIndex(o => +o.dataset.age === a), j = (i + (/Right|Down/.test(e.key) ? 1 : -1) + opts.length) % opts.length;
-      a = +opts[j].dataset.age; renderProv(); opts[j].focus();
-    });
+    ageOpts.querySelectorAll('button').forEach(b => b.onclick = () => { age = +b.dataset.age; renderProv(); });
     renderProv();
   }
 
