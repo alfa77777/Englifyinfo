@@ -851,6 +851,101 @@ main,.hdr,body>footer{zoom:var(--z,1)}
 @media (max-width:820px){.tp-hero .stage{display:none}.tp-card{margin-top:30px}.tp-legal{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:560px){.tp-steps{grid-template-columns:minmax(0,1fr)}.tp-terms{grid-template-columns:repeat(2,minmax(0,1fr))}.tp-term{padding:16px 14px 14px}.tp-term .tot{font-size:clamp(17px,4.9vw,21px)}.tp-term .pm,.tp-term s{font-size:12.5px}.tp-term .radio{top:12px;right:12px;width:20px;height:20px}.tp-card .st b{font-size:18px}}
 @media (max-width:360px){.tp-terms{grid-template-columns:minmax(0,1fr)}}
+
+/* ================= "Tarif ichida" — rich included section ================= */
+.fx-sec .sec-head .lead{margin-top:12px;max-width:60ch}
+.fx-nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:22px}
+.fx-num{position:relative;overflow:hidden;padding:20px 22px;border-radius:var(--r-lg);background:linear-gradient(150deg,var(--navy-800),var(--navy-950));color:#fff;box-shadow:0 20px 40px -26px rgba(13,27,69,.7)}
+.fx-num::after{content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(91,140,255,.45),transparent 70%)}
+.fx-num b{display:block;font-size:clamp(30px,3.4vw,42px);font-weight:800;letter-spacing:-.03em;line-height:1}
+.fx-num span{display:block;margin-top:8px;font-size:14px;color:#B9C8F0;font-weight:600}
+.fx-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.fx-grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.fx-card{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:start;padding:20px;border-radius:var(--r-lg);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);transition:transform .35s var(--ease-out),box-shadow .35s,border-color .35s}
+.fx-card:hover{transform:translateY(-3px);border-color:var(--blue-100);box-shadow:0 22px 40px -24px rgba(13,27,69,.35)}
+.fx-card h3{margin:2px 0 6px;font-size:16.5px;line-height:1.3}
+.fx-card p{margin:0;font-size:14.5px;line-height:1.55;color:var(--mute)}
+.fx-ic{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;font-size:24px;line-height:1;flex:none}
+.fx-sky{background:var(--sky-bg)}.fx-lav{background:var(--lav-bg)}.fx-peach{background:var(--peach-bg)}.fx-mint{background:var(--mint-bg)}.fx-pink{background:var(--pink-bg)}
+.fx-card:hover .fx-ic{animation:fxPop .5s var(--ease-out)}
+@keyframes fxPop{40%{transform:scale(1.14) rotate(-6deg)}}
+.fx-bonus{grid-column:1/-1;display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;padding:22px 24px;border-radius:var(--r-lg);
+  background:linear-gradient(120deg,#FFF2D2,#FFE3CF 55%,#FFE4EE);border:1px solid #FFD9A8;color:#3A2A08;position:relative;overflow:hidden}
+.fx-bonus::after{content:"";position:absolute;right:-40px;bottom:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.7),transparent 70%)}
+.fx-bonus .fx-ic{background:#fff;font-size:28px;width:56px;height:56px;box-shadow:0 10px 22px -12px rgba(217,145,0,.6)}
+.fx-bonus h3{margin:6px 0 4px;font-size:18px}
+.fx-bonus p{margin:0;font-size:15px;color:#6B5320}
+:root[data-theme="dark"] .fx-bonus{background:linear-gradient(120deg,#3A2E12,#3A2418 55%,#3A1A2A);border-color:#5A4518;color:#FFE9B8}
+:root[data-theme="dark"] .fx-bonus p{color:#E8CF98}
+:root[data-theme="dark"] .fx-bonus .fx-ic{background:rgba(255,255,255,.1)}
+.fx-badge{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:rgba(217,145,0,.16);color:#A46A00}
+:root[data-theme="dark"] .fx-badge{color:var(--sun)}
+.fx-chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:18px 0 0}
+.fx-chips li{padding:9px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-weight:700;font-size:14px}
+.fx-foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;margin-top:18px}
+.fx-foot .tp-fit{margin:0}
+.fx-foot.novid{grid-template-columns:minmax(0,1fr)}
+.fx-grid:not(.fx-grid-2) .fx-bonus{grid-column:span 2}
+.fx-foot .tp-vid{margin:0;background:var(--surface);border:1px solid var(--line)}
+/* Bo‘talog‘im: everything from Jo‘shqin */
+.fx-inherit{padding:20px 22px;border-radius:var(--r-lg);background:var(--sky-bg);border:1px dashed color-mix(in srgb,var(--sky) 40%,transparent)}
+.fx-inherit-h{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-bottom:14px}
+.fx-inherit-h b{font-size:17px}
+.fx-inherit .fx-badge{background:var(--surface);color:var(--sky)}
+.fx-inherit ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.fx-inherit li{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border-radius:999px;background:var(--surface);font-weight:700;font-size:13.5px;box-shadow:0 6px 14px -12px rgba(13,27,69,.5)}
+.fx-plus{display:flex;align-items:center;gap:10px;margin:22px 0 14px;font-weight:800;font-size:16px;color:var(--blue)}
+.fx-plus span{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--blue);color:#fff;font-size:20px;line-height:1}
+/* visuals column */
+.fx-split{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:14px;align-items:start}
+.fx-visual{padding:clamp(22px,2.6vw,30px);position:sticky;top:calc(96px * var(--z,1))}
+.fx-visual .h3{margin:6px 0 18px}
+.fx-note{margin:16px 0 0;font-size:13.5px;color:var(--mute)}
+.wk-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:12px;align-items:center;padding:12px 14px;border-radius:var(--r-sm);background:var(--bg);margin-top:10px}
+.wk-lab{font-weight:700;font-size:14.5px}
+.wk-dots{display:flex;gap:6px}
+.wk-dots i{width:16px;height:16px;border-radius:6px;background:var(--lav)}
+.wk-dots i.b{background:var(--peach)}
+.fx-visual.in .wk-dots i{animation:fxDot .5s var(--ease-out) both;animation-delay:calc(var(--i) * 120ms + 200ms)}
+@keyframes fxDot{from{transform:scale(0)}}
+.wk-n{font-weight:800;color:var(--mute);font-size:14px}
+.sp-bar{display:flex;height:48px;border-radius:14px;overflow:hidden;font-weight:800;font-size:14px;color:#fff}
+.sp-bar span{display:flex;align-items:center;padding:0 14px;white-space:nowrap}
+.sp-a{flex:7;background:linear-gradient(90deg,var(--blue),#5B8CFF)}
+.sp-b{flex:3;background:var(--lav);justify-content:center}
+.fx-visual.in .sp-a{animation:spGrow .9s var(--ease-out) both}
+@keyframes spGrow{from{flex-grow:0}}
+.sp-leg{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:10px;font-size:13px;color:var(--mute);font-weight:600}
+.sp-leg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:0}
+.sp-leg i.sp-a{background:var(--blue)}.sp-leg i.sp-b{background:var(--lav)}
+.ladder{margin-top:22px;display:grid;gap:8px}
+.ladder ol{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.ladder li{padding:11px 14px;border-radius:12px;background:var(--bg);font-size:14.5px;border-left:4px solid var(--blue)}
+.ladder li:nth-child(2){margin-left:14px}.ladder li:nth-child(3){margin-left:28px}
+.ld-end{font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.ld-end.to{color:var(--mint);margin-left:28px}
+.sc-opt{display:grid;gap:8px;padding:14px;border-radius:var(--r-sm);background:var(--bg);margin-top:10px}
+.sc-name{font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.sc-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.sc-days span{display:grid;place-items:center;height:40px;border-radius:10px;background:var(--surface);border:1px solid var(--line);font-weight:700;font-size:13px;color:var(--mute)}
+.sc-days span.on{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 8px 18px -10px rgba(45,107,255,.8)}
+.fx-apps{margin-top:14px;padding:16px 18px;border-radius:var(--r-lg);background:var(--surface);border:1px solid var(--line)}
+.fx-apps b{font-size:14.5px}
+.fx-apps ul{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.fx-apps li{padding:7px 12px;border-radius:999px;background:var(--bg);font-weight:700;font-size:13.5px}
+@media (max-width:1080px){.fx-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.fx-grid .fx-odd,.fx-grid:not(.fx-grid-2) .fx-bonus{grid-column:1/-1}.fx-split{grid-template-columns:minmax(0,1fr)}.fx-visual{position:static}}
+@media (max-width:640px){
+  .fx-nums{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .fx-num{padding:14px 12px}.fx-num b{font-size:24px}.fx-num span{font-size:12px;margin-top:6px}
+  .fx-grid,.fx-grid-2{grid-template-columns:minmax(0,1fr)}
+  .fx-grid .fx-odd{grid-column:auto}
+  .fx-card{padding:16px}.fx-ic{width:44px;height:44px;font-size:22px}
+  .fx-bonus{padding:18px}
+  .fx-foot{grid-template-columns:minmax(0,1fr)}
+  .sc-days{gap:4px}.sc-days span{height:36px;font-size:12px}
+}
+@media (max-width:400px){.fx-nums{grid-template-columns:minmax(0,1fr)}.fx-num{display:flex;align-items:center;gap:14px;padding:12px 16px}.fx-num b{font-size:26px;min-width:3.2ch}.fx-num span{margin:0;font-size:13.5px}}
+@media (prefers-reduced-motion:reduce){.fx-card:hover .fx-ic,.fx-visual.in .wk-dots i,.fx-visual.in .sp-a{animation:none}}
 </style>
 </head>
 <body>
@@ -895,7 +990,7 @@ main,.hdr,body>footer{zoom:var(--z,1)}
     <div>
       <p class="tp-kick fade-in"><span class="dot" aria-hidden="true"></span>Siz tanlagan tarif</p>
       <h1 class="h1"><span class="line"><span style="--i:0">Speaking kursi</span></span></h1>
-      <p class="lead fade-in" style="--d:450ms">Kurs maqsadi: boshlang‘ich darajadan o‘z fikringizni inglizcha ifodalay olishgacha.</p>
+      <p class="lead fade-in" style="--d:450ms">3 oyda boshlang‘ich darajadan o‘tgan, hozirgi va kelasi zamonda gaplasha oladigan darajagacha.</p>
       <ul class="tp-tags fade-in" style="--d:550ms"><li>3 oy · gapirish uchun</li><li>70% gapirish</li><li>Telegram guruh</li></ul>
       <div class="hero-cta fade-in" style="--d:650ms">
         <a class="btn btn-primary magnet" href="#narx">Narx va muddat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -905,19 +1000,22 @@ main,.hdr,body>footer{zoom:var(--z,1)}
     <div class="tp-card fade-in" style="--d:300ms">
       <div class="top"><span class="chip c-peach"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg></span><div><b>Speaking kursi</b><span>3 oy · gapirish uchun</span></div></div>
       <div class="from num">950 000 so‘m<span class="off">−14%</span><small>oyiga, 3 oylik tarifda · 1 oylik — 1 100 000 so‘m</small></div>
-      <div class="st"><div><b>70%</b><span>Zoom’da gapirish</span></div><div><b>30%</b><span>ilovada 5 zamon va 1000 so‘z</span></div><div><b>3 × 80</b><span>daqiqa — haftasiga</span></div><div><b>16–17</b><span>o‘quvchigacha guruh</span></div></div>
+      <div class="st"><div><b>70%</b><span>speaking — amaliyot</span></div><div><b>30%</b><span>grammatika</span></div><div><b>3 × 80</b><span>daqiqa — haftasiga, Zoom</span></div><div><b>IELTS 8</b><span>darajali ustoz</span></div></div>
       <p class="fit"><b>Kimga mos:</b> Asosiy maqsadi gapirish, sertifikat shart bo‘lmaganlarga.</p>
     </div>
   </div>
 </section>
 
-<section class="sec" id="ichida">
+
+<section class="sec fx-sec" id="ichida">
   <div class="wrap">
-    <div class="sec-head"><div><p class="eyebrow rv">Tarif ichida</p><h2 class="h2 rv" style="--i:1">Speaking kursi — <span class="hl">nima kiradi</span></h2></div></div>
-    <div class="tp-inc">
-      <div class="card rv"><ul class="ticks"><li>Kechki vaqtda darslar.</li><li>Ilovada video dars yo‘q — faqat so‘z yodlash va vazifa.</li><li>Yopiq Telegram guruh.</li></ul><p class="tp-fit"><b>Kimga mos:</b> Asosiy maqsadi gapirish, sertifikat shart bo‘lmaganlarga.</p><a class="tp-vid" href="https://youtu.be/SIiuFoE30l8" target="_blank" rel="noopener"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></i><span>Kurs haqida video<small>YouTube’da ochiladi ↗</small></span></a></div>
-      <div class="card rv" style="--i:1"><div class="stats"><div class="stat"><b>70%</b><span>Zoom’da gapirish</span></div><div class="stat"><b>30%</b><span>ilovada 5 zamon va 1000 so‘z</span></div><div class="stat"><b>3 × 80</b><span>daqiqa — haftasiga</span></div><div class="stat"><b>16–17</b><span>o‘quvchigacha guruh</span></div></div></div>
-    </div>
+    <div class="sec-head"><div><p class="eyebrow rv">Tarif ichida</p><h2 class="h2 rv" style="--i:1">Speaking kursi — <span class="hl">3 oyda gapira boshlang 🗣️</span></h2>
+      <p class="lead rv" style="--i:2">Ko‘proq amaliyotga urg‘u berilgan: darsning katta qismi — gapirish.</p></div></div>
+    <div class="fx-nums"><div class="fx-num rv" style="--i:0"><b class="num">3 oy</b><span>kurs davomiyligi</span></div><div class="fx-num rv" style="--i:1"><b class="num">3 × 80</b><span>daqiqa — haftasiga</span></div><div class="fx-num rv" style="--i:2"><b class="num">IELTS 8</b><span>darajali ustoz</span></div></div>
+    
+    <div class="fx-split"><div class="fx-visual card rv"><p class="eyebrow">Dars tarkibi</p><h3 class="h3">Ko‘proq gapirish, kamroq nazariya</h3><div class="sp-bar" role="img" aria-label="70% speaking, 30% grammatika"><span class="sp-a">70% speaking</span><span class="sp-b">30%</span></div><div class="sp-leg"><span><i class="sp-a"></i>Speaking — amaliy mashg‘ulot</span><span><i class="sp-b"></i>Grammatika</span></div><div class="ladder"><span class="ld-end">Boshlang‘ich</span><ol><li style="--i:0"><b>O‘tgan</b> zamon</li><li style="--i:1"><b>Hozirgi</b> zamon</li><li style="--i:2"><b>Kelasi</b> zamon</li></ol><span class="ld-end to">O‘rtacha ✓</span></div><p class="fx-note">Natija: o‘tgan, hozirgi va kelasi zamonda ingliz tilida gaplasha olasiz.</p></div><div class="fx-side"><div class="fx-grid fx-grid-2"><article class="fx-card rv" style="--i:0"><span class="fx-ic fx-sky" aria-hidden="true">💻</span><div><h3>Zoom’da jonli darslar</h3><p>Yopiq Telegram guruhda haftada 3 kun, 80 daqiqadan.</p></div></article><article class="fx-card rv" style="--i:1"><span class="fx-ic fx-lav" aria-hidden="true">🎓</span><div><h3>IELTS 8 darajali ustoz</h3><p>Darslarni yuqori darajali mutaxassis olib boradi.</p></div></article><article class="fx-card rv" style="--i:2"><span class="fx-ic fx-mint" aria-hidden="true">🤝</span><div><h3>Support teacher</h3><p>Qo‘shimcha shug‘ullanish kerak bo‘lsa — yordam beradi.</p></div></article><article class="fx-card rv" style="--i:0"><span class="fx-ic fx-peach" aria-hidden="true">📱</span><div><h3>Ilovada Speaking bo‘limi</h3><p>Kurs uchun maxsus darslar: speaking’da kerak bo‘ladigan yangi so‘zlar va mashqlar.</p></div></article></div><div class="fx-apps rv"><b>Englify ilovasining boshqa imkoniyatlari ham ochiq:</b><ul><li>🤖 AI</li><li>📚 Resources</li><li>⚔️ Battle</li><li>📒 My vocabulary</li><li>…</li></ul></div></div></div>
+    
+    <div class="fx-foot rv"><p class="tp-fit"><b>Kimga mos:</b> Asosiy maqsadi gapirish, sertifikat shart bo‘lmaganlarga.</p><a class="tp-vid" href="https://youtu.be/SIiuFoE30l8" target="_blank" rel="noopener"><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></i><span>Kurs haqida video<small>YouTube’da ochiladi ↗</small></span></a></div>
   </div>
 </section>
 
@@ -1167,7 +1265,7 @@ main,.hdr,body>footer{zoom:var(--z,1)}
 
 
   /* ================= plan page logic ================= */
-  const D = {"name": "Speaking kursi", "terms": [[1, 1100000], [3, 2850000]], "faq": [["Savolim bo‘lsa, kimga yozaman?", "Sizga biriktirilgan menejerga — shu sahifani sizga yuborgan mutaxassisga. Muddat, to‘lov va bo‘lib to‘lash bo‘yicha u yordam beradi."], ["Darajamni qanday bilaman?", "Jonli darsli kurslarda avval 15–20 daqiqalik daraja testi bo‘ladi; natijaga qarab mos guruh tanlanadi. Test uchun menejeringizga yozing."], ["Darslar qanday o‘tadi?", "70% — Zoom’da gapirish, 30% — ilovada 5 zamon va 1000 so‘z. Haftasiga 3 × 80 daqiqa, kechki vaqtda. Ilovada video dars yo‘q — faqat so‘z yodlash va vazifa."], ["Kurs kimga mos?", "Asosiy maqsadi gapirish, sertifikat shart bo‘lmaganlarga."], ["Guruhda necha kishi bo‘ladi?", "16–17 o‘quvchigacha. Guruhning yopiq Telegram chati ham bor."], ["Bo‘lib to‘lash bormi?", "Ha — foiz, ustama va penyasiz: Uzum Nasiya, Alif Nasiya, Pay Later, Variant Nasiya va Yandex Split. Bir necha oylik tariflar uchun; 1 oylik to‘lov faqat bir yo‘la. Rasmiylashtirish uchun menejeringizga yozing."], ["Englify rasmiy kompaniyami?", "Ha. “ENGLIFY” MCHJ 2022-yil 15-avgustda davlat ro‘yxatidan o‘tgan, STIR — 309 795 570. Xizmat shartlari — <a href=\"https://englify.uz/public-offer\" target=\"_blank\" rel=\"noopener\">ommaviy oferta</a>da."]], "multi": true};
+  const D = {"name": "Speaking kursi", "terms": [[1, 1100000], [3, 2850000]], "faq": [["Savolim bo‘lsa, kimga yozaman?", "Sizga biriktirilgan menejerga — shu sahifani sizga yuborgan mutaxassisga. Muddat, to‘lov va bo‘lib to‘lash bo‘yicha u yordam beradi."], ["Darajamni qanday bilaman?", "Jonli darsli kurslarda avval 15–20 daqiqalik daraja testi bo‘ladi; natijaga qarab mos guruh tanlanadi. Test uchun menejeringizga yozing."], ["Darslar qanday o‘tadi?", "70% — speaking, 30% — grammatika. Zoom’da haftasiga 3 marta 80 daqiqadan, kechki vaqtda, yopiq Telegram guruh bilan. Ilovada Speaking kursi uchun maxsus bo‘lim bor: kerakli yangi so‘zlar va mashqlar."], ["Ustoz kim?", "IELTS 8 darajasiga ega ustoz. Qo‘shimcha shug‘ullanish kerak bo‘lsa — support teacher yordam beradi."], ["Kurs kimga mos?", "Asosiy maqsadi gapirish, sertifikat shart bo‘lmaganlarga."], ["Guruhda necha kishi bo‘ladi?", "16–17 o‘quvchigacha. Guruhning yopiq Telegram chati ham bor."], ["Bo‘lib to‘lash bormi?", "Ha — foiz, ustama va penyasiz: Uzum Nasiya, Alif Nasiya, Pay Later, Variant Nasiya va Yandex Split. Bir necha oylik tariflar uchun; 1 oylik to‘lov faqat bir yo‘la. Rasmiylashtirish uchun menejeringizga yozing."], ["Englify rasmiy kompaniyami?", "Ha. “ENGLIFY” MCHJ 2022-yil 15-avgustda davlat ro‘yxatidan o‘tgan, STIR — 309 795 570. Xizmat shartlari — <a href=\"https://englify.uz/public-offer\" target=\"_blank\" rel=\"noopener\">ommaviy oferta</a>da."]], "multi": true};
   const base = D.terms[0][1];
   const offPct = (perMonth) => Math.round((1 - perMonth / base) * 100);
   let sel = D.terms.length - 1, pay = 1;
