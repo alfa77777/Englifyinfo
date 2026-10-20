@@ -761,6 +761,68 @@ main,.hdr,body>footer{zoom:var(--z,1)}
   .scenes{min-height:0;display:grid;gap:60px}.scene{position:relative;opacity:1;transform:none;filter:none}
   .mnav{transition:none}
 }
+/* ---------- "Savolingiz bormi?": pick / write a question → Telegram ---------- */
+.ask-main{min-width:0}
+.ask .ask-lead{margin:10px 0 0}
+.ask .ask-mgr{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:16px 0 0;padding:11px 14px;border-radius:var(--r-sm);background:var(--sky-bg);font-size:14.5px;color:var(--ink);max-width:none}
+.ask-mgr svg{width:20px;height:20px;color:#2AABEE;flex:none}
+.ask-mgr b{overflow-wrap:anywhere}
+.ask .ask-ctx{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 0;max-width:none}
+.ask-ctx>span{display:inline-flex;align-items:center;gap:6px;padding:7px 8px 7px 14px;border-radius:999px;background:var(--lav-bg);color:var(--ink);font-size:14px;font-weight:600}
+.ask-ctx>span:only-child{padding-right:14px}
+.ask-ctx button{width:30px;height:30px;border-radius:50%;border:0;background:var(--surface);color:var(--ink);font:inherit;font-size:13px;font-weight:800;cursor:pointer;display:grid;place-items:center}
+.ask .ask-lab{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;margin:22px 0 10px;font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);max-width:none}
+.ask-lab small{font-size:12.5px;font-weight:600;letter-spacing:0;text-transform:none}
+.ask-opts{display:flex;flex-wrap:wrap;gap:8px}
+.ask-o{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 16px 8px 12px;border-radius:999px;border:1.5px solid transparent;background:var(--sky-bg);color:var(--ink);font:inherit;font-weight:700;font-size:14px;line-height:1.2;text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .2s,color .2s,box-shadow .2s,transform .15s}
+.ask-sel,.mgr-note a{color:var(--blue);font-weight:700;text-decoration:none;display:inline-block;padding:4px 0}
+.ask-o span{font-size:17px;line-height:1;flex:none}
+.ask-o:hover{border-color:var(--blue)}
+.ask-o:active{transform:scale(.97)}
+.ask-o[aria-pressed="true"]{background:var(--blue);color:#fff;box-shadow:0 10px 22px -12px rgba(45,107,255,.9)}
+.ask-o[aria-pressed="true"]::after{content:"✓";font-weight:800}
+.ask textarea{display:block;width:100%;min-height:96px;resize:vertical;padding:12px 14px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:16px;line-height:1.5}
+.ask textarea::placeholder{color:var(--mute);opacity:.8}
+.ask textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px var(--blue-100)}
+.ask-bubble{padding:14px 16px;border-radius:18px 18px 18px 6px;background:#EEF4FF;color:#0D1B45;font-size:15px;line-height:1.5;white-space:pre-line;border:1px solid #D9E5FF;overflow-wrap:anywhere}
+:root[data-theme="dark"] .ask-bubble{background:#1A2550;color:#E7EEFF;border-color:#2A3A73}
+.ask-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.btn-tg{background:#2AABEE;color:#fff;box-shadow:0 12px 26px -12px rgba(42,171,238,.8)}
+.btn-tg:hover{background:#1E96D6}
+.btn-tg svg{width:18px;height:18px;flex:none}
+.btn-tg[aria-disabled="true"]{opacity:.55;box-shadow:none}
+.ask .ask-st{margin:12px 0 0;font-size:13.5px;font-weight:700;color:var(--mint);max-width:none}
+.ask .ask-st.warn{color:#E0663A}
+.ask-st:empty{display:none}
+.ask .ask-how{margin:10px 0 0;font-size:13px}
+@media (max-width:640px){
+  .contact.ask{grid-template-columns:minmax(0,1fr);padding:22px 18px}
+  .ask>.chip{display:none}
+  .ask-acts .btn{flex:1 1 100%}
+  .ask-o{font-size:13.5px;padding:8px 14px 8px 11px;gap:7px}
+}
+/* ---------- phones: comfortable tap targets + no text under 12px ---------- */
+@media (max-width:640px){
+  .logo{display:inline-flex;align-items:center;min-height:40px}
+  .rail div i{width:36px;height:36px}
+  .rail div{min-height:40px}
+  .lvp button{min-height:40px;padding:8px 14px;font-size:13px}
+  .copy{padding:8px 14px;font-size:12.5px}
+  .ofr,dd>a{display:inline-block;padding:8px 0}
+  .f-bot a{display:inline-block;padding:10px 0}
+  .kicker{font-size:12px}
+  .badge,.ok-tag{font-size:12px;letter-spacing:.08em}
+}
+/* story scenes: never squash the parts (the 1-3-7-30 timeline overlapped the text on short phones) */
+.scene>*{flex-shrink:0}
+@media (max-width:640px){.tl{margin-left:30px;margin-right:30px}}
+@media (max-width:640px) and (max-height:740px){
+  .story .h2{font-size:clamp(24px,7.4vw,30px)}
+  .story .eyebrow{margin-bottom:10px}
+  .story .lead{font-size:14.5px;margin-top:10px}
+  .tl{margin-top:34px;height:100px}
+  .story .hand{font-size:22px!important;margin-top:10px!important}
+}
 
 /* ================= plan pages ================= */
 .age-opts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:4px 0 14px}.age-opts button{justify-content:center;text-align:center;padding-inline:8px}@media (max-width:560px){.age-opts{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -903,13 +965,45 @@ main,.hdr,body>footer{zoom:var(--z,1)}
 .fx-visual{padding:clamp(22px,2.6vw,30px);position:sticky;top:calc(96px * var(--z,1))}
 .fx-visual .h3{margin:6px 0 18px}
 .fx-note{margin:16px 0 0;font-size:13.5px;color:var(--mute)}
-.gr-teacher{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:var(--r-sm);background:var(--sky-bg)}
-.gr-teacher b{display:block;font-size:15px}.gr-teacher small{font-size:13px;color:var(--mute);font-weight:600}
-.gr-av{width:42px;height:42px;border-radius:13px;background:var(--surface);display:grid;place-items:center;font-size:22px;flex:none}
-.gr-sup{background:var(--mint-bg);margin-top:0}
-.gr-seats{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;margin:14px 0}
-.gr-seats i{aspect-ratio:1;border-radius:50%;background:var(--lav-bg);border:2px solid var(--lav);opacity:.9}
-.fx-visual.in .gr-seats i{animation:fxDot .45s var(--ease-out) both;animation-delay:calc(var(--i) * 40ms + 200ms)}
+.zm-win{border-radius:18px;overflow:hidden;background:#0E1424;border:1px solid #232C45;box-shadow:0 24px 50px -28px rgba(5,12,42,.8);color:#E7EEFF}
+.zm-top{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#151C30;font-size:12.5px;font-weight:700;color:#9FB0DE}
+.zm-live{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;background:rgba(255,59,92,.16);color:#FF6B85;font-weight:800;letter-spacing:.06em}
+.zm-live i{width:7px;height:7px;border-radius:50%;background:#FF3B5C;animation:zmBlink 1.4s ease-in-out infinite}
+@keyframes zmBlink{50%{opacity:.25}}
+.zm-title{flex:1}
+.zm-dur{padding:3px 9px;border-radius:8px;background:rgba(255,255,255,.07);color:#DCE6FF}
+.zm-teacher{position:relative;display:flex;align-items:center;gap:12px;margin:12px 12px 0;padding:14px;border-radius:14px;
+  background:radial-gradient(120% 140% at 0% 0%,#2A4BB8 0%,#16245A 60%,#111A3A 100%);box-shadow:inset 0 0 0 2px #45D6A0}
+.zm-tav{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-size:24px;background:rgba(255,255,255,.12)}
+.zm-teacher b{display:block;font-size:15px;color:#fff}.zm-teacher small{font-size:12.5px;color:#B9C8F0;font-weight:600}
+.zm-wave{margin-left:auto;display:flex;align-items:center;gap:3px;height:22px}
+.zm-wave i{width:3px;height:30%;border-radius:2px;background:#45D6A0;animation:zmWave 1s ease-in-out infinite}
+.zm-wave i:nth-child(2){animation-delay:.15s}.zm-wave i:nth-child(3){animation-delay:.3s}.zm-wave i:nth-child(4){animation-delay:.45s}.zm-wave i:nth-child(5){animation-delay:.6s}
+@keyframes zmWave{50%{height:100%}}
+.zm-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;padding:12px}
+.zm-tile{position:relative;aspect-ratio:1;border-radius:10px;display:grid;place-items:end center;overflow:hidden;background:#1B243D;color:var(--zc)}
+.zm-tile svg{width:78%;height:78%;margin-bottom:-6%;opacity:.95}
+.zc-sky{--zc:#7EA4FF}.zc-lav{--zc:#A893FF}.zc-peach{--zc:#FF9E6B}.zc-mint{--zc:#45D6A0}.zc-pink{--zc:#FF79A8}.zc-sun{--zc:#FFC54F}
+.zm-tile.talk{animation:zmTalk 6.4s linear infinite;animation-delay:var(--d)}
+@keyframes zmTalk{0%,2%{box-shadow:inset 0 0 0 2px #45D6A0}20%{box-shadow:inset 0 0 0 2px #45D6A0}23%,100%{box-shadow:inset 0 0 0 0 transparent}}
+.zm-tile.me{background:linear-gradient(160deg,#2D6BFF,#1A3FB0);color:#fff;box-shadow:0 0 0 2px #fff,0 0 18px 2px rgba(91,140,255,.75);animation:zmMe 2.4s ease-in-out infinite}
+@keyframes zmMe{50%{box-shadow:0 0 0 2px #fff,0 0 4px 0 rgba(91,140,255,.4)}}
+.zm-me{position:absolute;top:3px;left:0;right:0;text-align:center;font-size:10px;font-weight:800;letter-spacing:.04em;z-index:1}
+.fx-visual.in .zm-tile:not(.talk):not(.me){animation:zmIn .45s var(--ease-out) both;animation-delay:calc(var(--k) * 35ms + 150ms)}
+@keyframes zmIn{from{transform:scale(.4);opacity:0}}
+.zm-bar{display:flex;align-items:center;gap:8px;padding:10px 12px;background:#151C30;font-size:15px}
+.zm-bar span{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.07)}
+.zm-bar .zm-cnt{width:auto;margin-left:auto;padding:0 12px;border-radius:999px;font-size:12.5px;font-weight:800;color:#DCE6FF}
+.zm-sup{display:flex;align-items:center;gap:12px;margin-top:12px;padding:12px 14px;border-radius:var(--r-sm);background:var(--mint-bg)}
+.zm-sav{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:20px;background:var(--surface)}
+.zm-sup b{display:block;font-size:14.5px}.zm-sup small{font-size:12.5px;color:var(--mute);font-weight:600}
+.zm-on{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;color:var(--mint)}
+.zm-on i{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 0 rgba(19,162,110,.5);animation:zmPing 1.8s ease-out infinite}
+@keyframes zmPing{70%{box-shadow:0 0 0 7px rgba(19,162,110,0)}100%{box-shadow:0 0 0 0 rgba(19,162,110,0)}}
+.zm-facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.zm-facts span{padding:7px 12px;border-radius:999px;background:var(--bg);font-weight:700;font-size:13px}
+@media (max-width:420px){.zm-grid{gap:4px;padding:10px}.zm-tile{border-radius:7px}.zm-me{font-size:10px;top:2px}.zm-teacher{padding:12px}.zm-tav{width:40px;height:40px;font-size:20px}}
+@media (prefers-reduced-motion:reduce){.zm-live i,.zm-wave i,.zm-tile.talk,.zm-tile.me,.zm-on i,.fx-visual.in .zm-tile{animation:none!important}}
 .ls-bar{display:flex;height:52px;border-radius:14px;overflow:hidden;font-weight:800;font-size:14px;color:#fff}
 .ls-bar span{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap}
 .ls-g{background:var(--lav)}
@@ -938,6 +1032,14 @@ main,.hdr,body>footer{zoom:var(--z,1)}
 .ladder li:nth-child(2){margin-left:14px}.ladder li:nth-child(3){margin-left:28px}
 .ld-end{font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 .ld-end.to{color:var(--mint);margin-left:28px}
+.kt{margin-top:4px}
+.kt-track{position:relative;height:52px;border-radius:14px;background:var(--bg);overflow:hidden}
+.kt-band{position:absolute;top:0;bottom:0;left:calc(100% / 5 * 1);width:calc(100% / 5 * 3);display:grid;place-items:center;border-radius:14px;background:linear-gradient(90deg,var(--mint),#3FCB97);color:#fff;font-weight:800;font-size:14px;white-space:nowrap;transform-origin:0 50%}
+.fx-visual.in .kt-band{animation:ktGrow .9s var(--ease-out) both}
+@keyframes ktGrow{from{transform:scaleX(0)}}
+.kt-ticks{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;font-weight:700;color:var(--mute)}
+.kt-ticks span{width:0;display:flex;justify-content:center;white-space:nowrap}
+.kt-ticks span:first-child{justify-content:flex-start}.kt-ticks span:last-child{justify-content:flex-end}
 .sc-opt{display:grid;gap:8px;padding:14px;border-radius:var(--r-sm);background:var(--bg);margin-top:10px}
 .sc-name{font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 .sc-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
@@ -959,7 +1061,7 @@ main,.hdr,body>footer{zoom:var(--z,1)}
   .sc-days{gap:4px}.sc-days span{height:36px;font-size:12px}
 }
 @media (max-width:400px){.fx-nums{grid-template-columns:minmax(0,1fr)}.fx-num{display:flex;align-items:center;gap:14px;padding:12px 16px}.fx-num b{font-size:26px;min-width:3.2ch}.fx-num span{margin:0;font-size:13.5px}}
-@media (prefers-reduced-motion:reduce){.fx-card:hover .fx-ic,.fx-visual.in .gr-seats i,.fx-visual.in .ls-chip,.fx-visual.in .ls-bar span,.fx-visual.in .sp-a{animation:none}}
+@media (prefers-reduced-motion:reduce){.fx-card:hover .fx-ic,.fx-visual.in .ls-chip,.fx-visual.in .ls-bar span,.fx-visual.in .sp-a,.fx-visual.in .kt-band{animation:none}}
 </style>
 </head>
 <body>
@@ -1056,7 +1158,7 @@ main,.hdr,body>footer{zoom:var(--z,1)}
           <button class="btn btn-line" type="button" id="copy">Nusxa olish</button>
         </div>
         <p class="tp-copied" id="copied" aria-live="polite"></p>
-        <p class="src" style="margin:0">Telegram’da menejeringiz chatini tanlang. Nusxa olsangiz — chatga joylang.</p>
+        <p class="src" style="margin:0" id="shareHow">Telegram’da menejeringiz chatini tanlang. Nusxa olsangiz — chatga joylang.</p>
       </div>
     </div>
     <div class="card inst rv" style="margin-top:18px">
@@ -1107,13 +1209,24 @@ main,.hdr,body>footer{zoom:var(--z,1)}
 
 <section class="sec" id="aloqa" style="padding-top:0">
   <div class="wrap">
-    <div class="card contact rv">
+    <div class="card contact ask rv" id="ask" data-course="Speaking kursi">
       <span class="chip c-sky"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg></span>
-      <div>
+      <div class="ask-main">
         <h2 class="h3" style="font-size:clamp(22px,2.4vw,30px)">Savolingiz bormi? <span class="hl">Menejeringizga yozing.</span></h2>
-        <p>Sizga biriktirilgan mutaxassis — shu sahifani sizga yuborgan menejer. Speaking kursi bo‘yicha barcha savollaringizga u javob beradi:</p>
-        <ul class="topics"><li>Muddat</li><li>To‘lov</li><li>Bo‘lib to‘lash</li><li>Daraja testi</li><li>Dars jadvali</li></ul>
-        <p style="margin:16px 0 0"><a class="btn btn-primary" href="#tanlov">Tanlovimni yuborish <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+        <p class="ask-lead">Sizga biriktirilgan mutaxassis — shu sahifani sizga yuborgan menejer. Speaking kursi bo‘yicha savolni tanlang yoki yozing — Telegram orqali bir bosishda yuborasiz.</p>
+        <p class="ask-mgr" id="askMgr" hidden></p>
+        <p class="ask-ctx" id="askCtx" hidden></p>
+        <p class="ask-lab">Tayyor savollar <small>bir nechtasini tanlash mumkin</small></p>
+        <div class="ask-opts" role="group" aria-label="Tayyor savollar"><button type="button" class="ask-o" aria-pressed="false" data-q="Qaysi muddatni tanlash men uchun foydaliroq?"><span aria-hidden="true">📅</span>Muddat</button><button type="button" class="ask-o" aria-pressed="false" data-q="To‘lovni qanday usulda qilsam bo‘ladi?"><span aria-hidden="true">💳</span>To‘lov</button><button type="button" class="ask-o" aria-pressed="false" data-q="Bo‘lib to‘lash shartlari qanday?"><span aria-hidden="true">🗓️</span>Bo‘lib to‘lash</button><button type="button" class="ask-o" aria-pressed="false" data-q="Daraja testini qachon va qanday topshiraman?"><span aria-hidden="true">🧪</span>Daraja testi</button><button type="button" class="ask-o" aria-pressed="false" data-q="Darslar qaysi kunlari va soat nechada bo‘ladi?"><span aria-hidden="true">🕒</span>Dars jadvali</button><button type="button" class="ask-o" aria-pressed="false" data-q="Darslarni qachondan boshlasam bo‘ladi?"><span aria-hidden="true">🚀</span>Qachon boshlash</button></div>
+        <label class="ask-lab" for="askText">Yoki o‘zingiz yozing <small>ixtiyoriy</small></label>
+        <textarea id="askText" rows="3" maxlength="700" placeholder="Savolingizni shu yerga yozing…" autocomplete="off"></textarea>
+        <div class="ask-prev" id="askPrev" hidden><span class="ask-lab">Yuboriladigan xabar</span><div class="ask-bubble" id="askMsg"></div></div>
+        <div class="ask-acts">
+          <a class="btn btn-tg" id="askSend" href="https://t.me/" target="_blank" rel="noopener" aria-disabled="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 4.3 18.4 19c-.2 1-.9 1.3-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8 8.7-7.9c.4-.3-.1-.5-.6-.2L6.4 12.9l-4.6-1.4c-1-.3-1-1 .2-1.5L20.2 3c.8-.3 1.6.2 1.3 1.3z"/></svg><span>Telegram orqali yuborish</span></a>
+          <button class="btn btn-line" type="button" id="askCopy">Nusxa olish</button>
+        </div>
+        <p class="ask-st" id="askSt" aria-live="polite"></p>
+        <p class="ask-how" id="askHow">Telegram ochiladi — menejeringiz chatini tanlab, «Yuborish»ni bosing.</p><p class="ask-how"><a class="ask-sel" href="#tanlov">Tanlagan muddat va narxingizni yuborish →</a></p>
       </div>
     </div>
   </div>
@@ -1258,6 +1371,92 @@ main,.hdr,body>footer{zoom:var(--z,1)}
     });
   }
 
+  /* ---------- manager's Telegram + "Savolingiz bormi?" ----------
+     A manager can add their Telegram to the link: ?m=username (or ?m=+998901234567).
+     Then "send" opens a chat with that manager with the message already typed.
+     Without it, Telegram's share screen opens and the student picks the manager's chat. */
+  const MGR = (() => {
+    const norm = v => {
+      v = String(v || '').trim().replace(/^(https?:\/\/)?(www\.)?(t|telegram)\.me\//i, '').replace(/^@/, '').split(/[/?#&]/)[0];
+      const d = v.replace(/[\s().-]/g, '');
+      if (/^\+?\d{9,15}$/.test(d)) { let n = d.replace(/^\+/, ''); if (n.length === 9) n = '998' + n; return '+' + n; }
+      return /^[A-Za-z][A-Za-z0-9_]{3,31}$/.test(v) ? v : '';
+    };
+    let m = '';
+    try { const q = new URLSearchParams(location.search); m = norm(q.get('m') || q.get('tg')); } catch (e) {}
+    try { if (m) localStorage.setItem('englify-mgr', m); else m = norm(localStorage.getItem('englify-mgr')); } catch (e) {}
+    return m;
+  })();
+  const SITE_URL = 'https://englifyinfo.netlify.app/';
+  const pageUrl = () => /^https?:$/.test(location.protocol) ? location.origin + location.pathname : SITE_URL;
+  const tgLink = text => MGR ? 'https://t.me/' + MGR + '?text=' + encodeURIComponent(text)
+    : 'https://t.me/share/url?url=' + encodeURIComponent(pageUrl()) + '&text=' + encodeURIComponent(text);
+  const withMgr = href => MGR ? href + (href.includes('?') ? '&' : '?') + 'm=' + encodeURIComponent(MGR) : href;
+  async function copyText(t) {
+    try { await navigator.clipboard.writeText(t); return true; } catch (e) {
+      const ta = document.createElement('textarea'); ta.value = t; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;top:0;opacity:0';
+      document.body.appendChild(ta); ta.select(); let ok = false; try { ok = document.execCommand('copy'); } catch (x) {} ta.remove(); return ok;
+    }
+  }
+  let askSetCourse = () => {};
+  const askEl = $('#ask');
+  if (askEl) {
+    const opts = [...askEl.querySelectorAll('.ask-o')], ta = $('#askText'), send = $('#askSend'), st = $('#askSt'), ctxEl = $('#askCtx');
+    let course = askEl.dataset.course || '';
+    const fixed = !!course;
+    if (MGR) {
+      const mg = $('#askMgr'); mg.hidden = false;
+      mg.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 4.3 18.4 19c-.2 1-.9 1.3-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8 8.7-7.9c.4-.3-.1-.5-.6-.2L6.4 12.9l-4.6-1.4c-1-.3-1-1 .2-1.5L20.2 3c.8-.3 1.6.2 1.3 1.3z"/></svg><span>Menejeringiz Telegram’da:</span>';
+      const b = document.createElement('b'); b.textContent = MGR[0] === '+' ? (/^\+998\d{9}$/.test(MGR) ? MGR.replace(/^(\+998)(\d\d)(\d{3})(\d\d)(\d\d)$/, '$1 $2 $3 $4 $5') : MGR) : '@' + MGR; mg.appendChild(b);
+      $('#askHow').textContent = 'Menejeringiz bilan chat ochiladi, xabar tayyor turadi — faqat «Yuborish»ni bosing.';
+    }
+    const message = () => {
+      const all = opts.filter(b => b.getAttribute('aria-pressed') === 'true').map(b => b.dataset.q);
+      const own = ta.value.trim(); if (own) all.push(own);
+      if (!all.length) return '';
+      const many = all.length > 1, word = many ? 'savollarim' : 'savolim';
+      return 'Assalomu alaykum! Englify sahifasidan yozyapman.\n' +
+        (course ? `«${course}» kursi bo‘yicha ${word} bor:` : `${many ? 'Savollarim' : 'Savolim'} bor:`) + '\n' +
+        (many ? all.map(q => '• ' + q).join('\n') : all[0]);
+    };
+    const update = () => {
+      const m = message();
+      $('#askPrev').hidden = !m; $('#askMsg').textContent = m;
+      send.setAttribute('aria-disabled', String(!m));
+      send.href = m ? tgLink(m) : 'https://t.me/' + (MGR || '');
+      st.textContent = ''; st.className = 'ask-st';
+    };
+    const renderCtx = () => {
+      ctxEl.hidden = !course; ctxEl.textContent = '';
+      if (!course) return;
+      const sp = document.createElement('span'); sp.textContent = '📚 Kurs: '; const b = document.createElement('b'); b.textContent = course; sp.appendChild(b); ctxEl.appendChild(sp);
+      if (!fixed) { const x = document.createElement('button'); x.type = 'button'; x.textContent = '✕'; x.setAttribute('aria-label', 'Kursni olib tashlash');
+        x.onclick = () => { course = ''; renderCtx(); update(); }; sp.appendChild(x); }
+    };
+    askSetCourse = name => { if (fixed || !name) return; course = name; renderCtx(); update(); };
+    document.addEventListener('click', e => { const a = e.target.closest('[data-ask-course]'); if (a) askSetCourse(a.dataset.askCourse); });
+    opts.forEach(b => b.onclick = () => { b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')); update(); });
+    ta.addEventListener('input', update);
+    send.addEventListener('click', e => {
+      const m = message();
+      if (!m) { e.preventDefault(); st.textContent = 'Avval savolni tanlang yoki yozing.'; st.className = 'ask-st warn'; return; }
+      copyText(m).then(ok => { if (ok) { st.textContent = '✓ Xabar nusxalandi ham — chatda ko‘rinmasa, joylab yuboring.'; st.className = 'ask-st'; } });
+    });
+    $('#askCopy').onclick = async () => {
+      const m = message();
+      if (!m) { st.textContent = 'Avval savolni tanlang yoki yozing.'; st.className = 'ask-st warn'; return; }
+      const ok = await copyText(m);
+      st.textContent = ok ? '✓ Nusxa olindi — menejeringiz chatiga joylang.' : 'Nusxa olinmadi — xabarni belgilab, qo‘lda nusxa oling.';
+      st.className = ok ? 'ask-st' : 'ask-st warn';
+    };
+    /* phones: keep the text box above the keyboard */
+    if (!fine) ta.addEventListener('focus', () => setTimeout(() => {
+      const vv = window.visualViewport, vh = vv ? vv.height : innerHeight, r = ta.getBoundingClientRect();
+      if (r.bottom > vh - 12 || r.top < 80) scrollBy({ top: r.top - Math.max(80, (vh - r.height) / 2), behavior: 'instant' });
+    }, 350));
+    renderCtx(); update();
+  }
+
   /* ---------- light / dark switch (light by default, choice remembered per browser) ---------- */
   const themeBtn = $('#themeBtn'), rootEl = document.documentElement;
   function applyTheme(t) {
@@ -1348,10 +1547,9 @@ main,.hdr,body>footer{zoom:var(--z,1)}
     $('#copied').textContent = ok ? '✓ Nusxa olindi — menejeringiz chatiga joylang.' : 'Nusxa olinmadi — matnni belgilab, qo‘lda nusxa oling.';
   };
   $('#share').onclick = () => {
-    const page = /^https?:/.test(location.href) ? location.href.split('#')[0] : '';
-    const u = 'https://t.me/share/url?url=' + encodeURIComponent(page || ' ') + '&text=' + encodeURIComponent(message());
-    window.open(u, '_blank', 'noopener');
+    window.open(tgLink(message()), '_blank', 'noopener');
   };
+  if (MGR) $('#shareHow').textContent = 'Menejeringiz bilan Telegram chati ochiladi — xabar tayyor turadi. Nusxa olsangiz — chatga joylang.';
   renderTerms(); update(false);
 
   /* instalment providers by payer age (same data as the info page) */
