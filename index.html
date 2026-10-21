@@ -117,7 +117,8 @@ button{cursor:pointer}
 /* ---------- hero ---------- */
 .hero{position:relative;background:radial-gradient(900px 600px at 78% 30%,#1D3FA8 0%,transparent 60%),radial-gradient(700px 500px at 10% 0%,#13286B 0%,transparent 70%),linear-gradient(180deg,var(--navy-900),var(--navy-950));color:#fff;padding-top:calc(120px + env(safe-area-inset-top,0px));padding-bottom:150px;overflow:hidden;isolation:isolate}
 .hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.09) 1px,transparent 1px);background-size:26px 26px;mask-image:radial-gradient(ellipse at 70% 30%,#000 10%,transparent 65%);z-index:-1}
-.spot{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(91,140,255,.28),transparent 65%);left:var(--sx,70%);top:var(--sy,30%);transform:translate(-50%,-50%);pointer-events:none;z-index:-1;transition:left .6s var(--ease-out),top .6s var(--ease-out)}
+.spot{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(91,140,255,.28),transparent 65%);left:70%;top:30%;transform:translate(-50%,-50%);pointer-events:none;z-index:-1;will-change:transform}
+.spot.live{left:0;top:0}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(24px,4vw,56px);align-items:center}
 .kicker{font-size:12px;letter-spacing:.2em;font-weight:700;color:var(--blue-300);text-transform:uppercase;margin:0 0 22px}
 .line{display:block;overflow:hidden;padding:.14em 0 .22em;margin:-.14em 0 -.16em}
@@ -999,7 +1000,10 @@ main,.hdr,body>footer{zoom:var(--z,1)}
 .qbox .opt:active{transform:scale(.985)}
 .qbox .opt>svg{transition:transform .25s}
 .qbox .opt:hover>svg{transform:translateX(3px);color:var(--blue)}
-.q-hint{margin:auto 0 0;font-size:13px;color:var(--mute)}
+.q-hint{margin:0;font-size:13px;color:var(--mute)}
+.q-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;min-height:38px}
+.q-foot-r{margin-top:0}
+.q-foot .q-back{flex:none;margin-left:auto;padding:9px 14px 9px 11px}
 .res-facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
 .res-facts span{padding:6px 11px;border-radius:999px;background:var(--surface);font-size:13px;font-weight:700;box-shadow:0 6px 14px -12px rgba(13,27,69,.5)}
 .res-price{margin:14px 0 0;font-size:14px;color:var(--mute)}
@@ -1805,11 +1809,24 @@ html.sh-open{overflow:hidden}
 
   /* ---------- hero parallax + spotlight ---------- */
   const stage = $('#stage'), hero = $('#hero'), spot = $('#spot');
+  /* spotlight: follows the cursor smoothly. Large screens scale the page (--z), so convert screen px → page px */
+  const SP = { x: 0, y: 0, tx: 0, ty: 0, raf: 0 };
+  const spotPlace = () => { const h = spot.offsetWidth / 2; spot.style.transform = `translate3d(${SP.x - h}px, ${SP.y - h}px, 0)`; };
+  const spotStep = () => {
+    SP.x += (SP.tx - SP.x) * .2; SP.y += (SP.ty - SP.y) * .2; spotPlace();
+    SP.raf = Math.abs(SP.tx - SP.x) + Math.abs(SP.ty - SP.y) > .4 ? requestAnimationFrame(spotStep) : 0;
+  };
+  function spotTo(cx, cy) {
+    const r = hero.getBoundingClientRect(), k = r.width / hero.offsetWidth || 1;
+    SP.tx = (cx - r.left) / k; SP.ty = (cy - r.top) / k;
+    if (!spot.classList.contains('live')) { SP.x = hero.offsetWidth * .7; SP.y = hero.offsetHeight * .3; spot.classList.add('live'); }
+    if (!SP.raf) SP.raf = requestAnimationFrame(spotStep);
+  }
   if (fine && !reduce) {
     hero.addEventListener('pointermove', e => {
       const r = hero.getBoundingClientRect(), nx = (e.clientX - r.left) / r.width - .5, ny = (e.clientY - r.top) / r.height - .5;
       if (stage) stage.querySelectorAll('.layer').forEach(l => { const d = +l.dataset.depth; l.style.transform = `translate(${nx * d}px, ${ny * d}px)` + (l.classList.contains('note') ? ' rotate(-8deg)' : ''); });
-      spot.style.left = (e.clientX - r.left) + 'px'; spot.style.top = (e.clientY - r.top) + 'px';
+      spotTo(e.clientX, e.clientY);
     });
     /* magnetic buttons */
     $$('.magnet').forEach(b => {
@@ -2103,22 +2120,22 @@ html.sh-open{overflow:hidden}
   const backBtn = () => fHist.length ? `<button class="q-back" type="button" id="fBack">${ARROW_L}Orqaga</button>` : '';
   function bindBack() { const b = $('#fBack'); if (b) b.onclick = () => { const k = fHist.pop(); vt(() => renderQ(k), finder); }; }
   function renderQ(k) {
-    finder.innerHTML = `<div class="qtop"><span class="q-l">${backBtn()}<span>${k + 1}-savol / 3</span></span><span class="bars">${Q.map((_, j) => `<i class="${j <= k ? 'on' : ''}"></i>`).join('')}</span></div>
+    finder.innerHTML = `<div class="qtop"><span class="q-l"><span>${k + 1}-savol / 3</span></span><span class="bars">${Q.map((_, j) => `<i class="${j <= k ? 'on' : ''}"></i>`).join('')}</span></div>
       <h3 class="h3" style="font-size:clamp(22px,2.2vw,28px)">${Q[k].q}</h3>
       <div class="opts">${Q[k].o.map((o, j) => `<button class="opt" type="button" data-j="${j}"><span>${o[0]}${o[1] ? `<small>${o[1]}</small>` : ''}</span>${ARROW_R}</button>`).join('')}</div>
-      <p class="q-hint">${k ? 'Adashib bosdingizmi? «Orqaga» tugmasi bilan qaytasiz.' : 'Javobni keyin ham o‘zgartirish mumkin.'}</p>`;
+      <div class="q-foot"><p class="q-hint">${k ? 'Adashib bosdingizmi? «Orqaga» bilan qaytasiz.' : 'Javobni keyin ham o‘zgartirish mumkin.'}</p>${backBtn()}</div>`;
     finder.querySelectorAll('.opt svg').forEach(s => { s.style.width = '18px'; s.style.flex = 'none'; });
     finder.querySelectorAll('.opt').forEach(b => b.onclick = () => { const t = Q[k].o[+b.dataset.j][2]; fHist.push(k); vt(() => typeof t === 'number' ? renderQ(t) : renderR(t), finder); });
     bindBack();
   }
   function renderR(id) {
     const c = C[id];
-    finder.innerHTML = `<div class="qtop"><span class="q-l">${backBtn()}<span>Natija</span></span><span class="bars"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+    finder.innerHTML = `<div class="qtop"><span class="q-l"><span>Natija</span></span><span class="bars"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
       <div class="res"><span class="chip ${c.c}">${c.ic}</span><p style="margin:14px 0 4px;font-weight:700;color:var(${c.col})">Sizga mos yo‘l</p><h3 class="h2" style="font-size:clamp(30px,3.4vw,44px)">${c.name}</h3><p style="color:var(--mute);margin:8px 0 0">${c.blurb}</p>
         <div class="res-facts">${c.stats.slice(0, 3).map(([n, l]) => `<span>${n} ${l}</span>`).join('')}</div>
         <p class="res-price">dan <b class="num">${fmt(c.from)} so‘m</b> · ${c.fromTxt}</p></div>
       <div class="cd-actions" style="margin-top:auto"><button class="btn btn-primary btn-sm" type="button" id="fOpen">Kurs bilan tanishish ${ARROW_R}</button><button class="btn btn-line btn-sm" type="button" id="fAgain">Qaytadan</button></div>
-      <p class="mgr-note" style="margin:0">Tanlovni tasdiqlash uchun <a href="#aloqa" data-ask-course="${c.name}">menejeringizga yozing →</a></p>`;
+      <div class="q-foot q-foot-r"><p class="mgr-note" style="margin:0">Tanlovni tasdiqlash uchun <a href="#aloqa" data-ask-course="${c.name}">menejeringizga yozing →</a></p>${backBtn()}</div>`;
     $('#fOpen').onclick = () => openCourse(id);
     $('#fAgain').onclick = () => { fHist = []; vt(() => renderQ(0), finder); };
     bindBack();
