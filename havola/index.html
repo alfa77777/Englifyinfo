@@ -21,7 +21,8 @@ h1{font-size:clamp(24px,6vw,32px);line-height:1.15;letter-spacing:-.02em;margin:
 .card{background:var(--surface);border-radius:20px;padding:20px;box-shadow:0 18px 40px -26px rgba(13,27,69,.45);border:1px solid var(--line)}
 label,.lab{display:block;font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--mute);margin:0 0 8px}
 input{width:100%;font:inherit;font-size:16px;padding:13px 14px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
-input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px var(--blue-100)}
+input:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px var(--blue-100)}
+textarea{width:100%;font:inherit;font-size:16px;line-height:1.5;padding:12px 14px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);resize:vertical;min-height:132px;overflow:hidden}
 .hint{font-size:13px;color:var(--mute);margin:8px 0 0}
 .hint.bad{color:var(--bad);font-weight:700}.hint.good{color:var(--ok);font-weight:700}
 .pages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0}
@@ -68,6 +69,12 @@ code{font-size:13px;background:var(--surface);border:1px solid var(--line);paddi
       </div>
     </div>
 
+    <div class="sec">
+      <label for="msg">O‘quvchiga boradigan xabar</label>
+      <textarea id="msg" rows="5" spellcheck="false"></textarea>
+      <p class="hint">Sahifaga qarab o‘zi tayyorlanadi — xohlasangiz, o‘zgartiring.</p>
+    </div>
+
     <div class="out off" id="out">Avval Telegram’ingizni kiriting</div>
     <div class="acts">
       <button class="btn b-main" type="button" id="copy" aria-disabled="true">Havolani nusxalash</button>
@@ -99,6 +106,14 @@ code{font-size:13px;background:var(--surface);border:1px solid var(--line);paddi
     return /^[A-Za-z][A-Za-z0-9_]{3,31}$/.test(v) ? v : '';
   };
   let page = '';
+  /* ready-made message for the student, per page (manager can edit it) */
+  const NAME = { 'joshqin/': ['Jo‘shqin', 'nimalar kiradi, narxlar, bonus oylar va bo‘lib to‘lash'], 'botalogim/': ['Bo‘talog‘im', 'darslar qanday o‘tadi, narxlar va bo‘lib to‘lash'],
+    'speaking/': ['Speaking', 'darslar qanday o‘tadi, narxlar va bo‘lib to‘lash'], 'individual/': ['Individual 1:1', 'darslar qanday o‘tadi, jadval va narx'], 'ielts/': ['IELTS', 'guruh, ustoz, narxlar va bo‘lib to‘lash'] };
+  const fit = () => { const m = $('#msg'); m.style.height = 'auto'; m.style.height = m.scrollHeight + 4 + 'px'; };
+  const defMsg = p => p && NAME[p]
+    ? `Assalomu alaykum! 😊\nSiz tanlagan «${NAME[p][0]}» tarifi haqida hammasi shu sahifada: ${NAME[p][1]}.\nSavol tug‘ilsa, sahifaning o‘zidan bir bosishda menga bemalol yozing ✍️`
+    : 'Assalomu alaykum! 😊\nEnglify kurslari bilan shu sahifada tanishib chiqing. Avval 3 ta qisqa savolga javob bering — sahifaning o‘zi sizga qaysi kurs mosligini ko‘rsatadi.\nSavol tug‘ilsa, sahifadan bir bosishda menga yozishingiz mumkin ✍️';
+
   try { const s = localStorage.getItem('englify-mgr-self'); if (s) $('#tg').value = s; } catch (e) {}
   const link = () => { const m = norm($('#tg').value); return m ? base + page + '?m=' + encodeURIComponent(m) : ''; };
   const render = () => {
@@ -109,12 +124,13 @@ code{font-size:13px;background:var(--surface);border:1px solid var(--line);paddi
     $('#out').textContent = u || 'Avval Telegram’ingizni kiriting'; $('#out').classList.toggle('off', !u);
     ['#copy', '#share', '#test'].forEach(s => $(s).setAttribute('aria-disabled', String(!u)));
     $('#test').href = u || './';
-    $('#share').href = u ? 'https://t.me/share/url?url=' + encodeURIComponent(u) + '&text=' + encodeURIComponent('Englify kurslari haqida ma’lumot. Savollaringizni shu sahifadan menga yuborishingiz mumkin.') : 'https://t.me/';
+    $('#share').href = u ? 'https://t.me/share/url?url=' + encodeURIComponent(u) + '&text=' + encodeURIComponent($('#msg').value.trim() || defMsg(page)) : 'https://t.me/';
     $('#st').textContent = '';
   };
   $('#tg').addEventListener('input', render);
+  $('#msg').addEventListener('input', () => { fit(); const t = $('#msg').value.trim(), u = link(); if (u) $('#share').href = 'https://t.me/share/url?url=' + encodeURIComponent(u) + '&text=' + encodeURIComponent(t || defMsg(page)); });
   document.querySelectorAll('#pages button').forEach(b => b.onclick = () => {
-    page = b.dataset.p; document.querySelectorAll('#pages button').forEach(x => x.setAttribute('aria-pressed', String(x === b))); render();
+    page = b.dataset.p; document.querySelectorAll('#pages button').forEach(x => x.setAttribute('aria-pressed', String(x === b))); $('#msg').value = defMsg(page); fit(); render();
   });
   $('#copy').onclick = async () => {
     const u = link(); if (!u) return; let ok = false;
@@ -123,6 +139,7 @@ code{font-size:13px;background:var(--surface);border:1px solid var(--line);paddi
       try { ok = document.execCommand('copy'); } catch (x) {} ta.remove(); }
     $('#st').textContent = ok ? '✓ Nusxalandi — o‘quvchiga yuboring.' : 'Nusxa olinmadi — havolani bosib turib, qo‘lda nusxalang.';
   };
+  $('#msg').value = defMsg(page); fit(); addEventListener('resize', fit);
   render();
 })();
 </script>
